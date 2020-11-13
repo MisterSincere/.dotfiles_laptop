@@ -1,0 +1,7 @@
+[alias]
+	st = status
+[user]
+	name = Nikkel Heesen
+	email = n.heesen@tu-bs.de
+[core]
+	editor = vim

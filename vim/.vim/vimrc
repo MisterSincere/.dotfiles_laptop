@@ -43,7 +43,7 @@ set shiftwidth=2
 set expandtab
 set nu
 set autoindent
-set termguicolors
+"set termguicolors
 set splitright
 set splitbelow
 set noswapfile
