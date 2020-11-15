@@ -26,6 +26,7 @@ lib32-nvidia-utils [multilib]
 i3-gaps i3status i3blocks
 i3lock-color-git [yay]
 polybar [yay]
+autotiling [yay]
 picom
 feh
 dmenu rofi
@@ -61,6 +62,7 @@ steam
 discord
 skypeforlinux-stable-bin [yay]
 whatsapp-nativefier [yay]
+slack-desktop [yay]
 
 # java
 jre-openjdk jdk-openjdk

@@ -120,6 +120,7 @@ set $ws10 "10"
 # Assign programs to workspaces
 for_window [class="Spotify"]      move to workspace $ws2
 for_window [class="discord"]      move to workspace $ws3
+for_window [class="Slack"]      move to workspace $ws3
 for_window [class="whatsapp-nativefier-d40211"] move to workspace $ws3
 for_window [class="Skype"]        move to workspace $ws3
 for_window [class="Thunderbird"]  move to workspace $ws4
@@ -269,5 +270,7 @@ exec_always --no-startup-id picom --xrender-sync-fence -i 1 -f -b --config $HOME
 # Polybar Launc Script
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+# autotiling
+exec_always --no-startup-id autotiling
 
 
