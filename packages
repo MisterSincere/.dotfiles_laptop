@@ -1,8 +1,26 @@
 # mem list of packages
 
-# system / graphical
-xorg xorg-xinit
+# basic
+base base-devel linux linux-firmware
 intel-ucode
+networkmanager network-manager-applet
+wireless_tools wpa_supplicant
+openssh
+grub
+efibootmgr
+dosfstools
+gptfdisk
+os-prober
+ntfs-3g
+dialog
+mtools
+cups
+
+# basic other
+reflector vim git
+
+# graphical
+xorg xorg-xinit
 nvidia nvidia-utils nvidia-settings
 lib32-nvidia-utils [multilib]
 i3-gaps i3status i3blocks
@@ -31,6 +49,10 @@ pulseaudio
 pulseeffects
 pulseaudio-alsa lib32-libpulse lib32-alsa-plugins
 
+# bluetooth
+bluez bluez-utils
+pulseaudio-bluetooth
+
 # browsing
 firefox thunderbird
 
@@ -41,6 +63,10 @@ steam
 discord
 skypeforlinux-stable-bin [yay]
 whatsapp-nativefier [yay]
+
+# java
+jre-openjdk jdk-openjdk
+openjdk-doc openjdk-src
 
 # file explorer
 thunar
