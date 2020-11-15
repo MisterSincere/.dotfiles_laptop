@@ -25,6 +25,7 @@ nvidia nvidia-utils nvidia-settings
 lib32-nvidia-utils [multilib]
 i3-gaps i3status i3blocks
 i3lock-color-git [yay]
+polybar [yay]
 picom
 feh
 dmenu rofi
@@ -40,9 +41,6 @@ ttf-font-awesome
 ttf-liberation
 ttf-ms-win10 [yay]
 ttf-ms-fonts [yay][legacy]
-
-# more customizable than i3bar
-polybar
 
 # audio
 pulseaudio

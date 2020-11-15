@@ -36,6 +36,8 @@ orange  = #ffff6a00
 lorange = #ffffb52a
 white   = #ffeeeeee
 black   = #ff000000
+dred    = #bd2c40
+red     = #e60053
 
 [bar/dp2]
 monitor = ${env:MONITOR:DP-2}
@@ -59,8 +61,8 @@ font-0 = fixed:pixelsize=12;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 modules-left = i3
-modules-center = mpd
-modules-right = pulseaudio xkeyboard memory cpu eth temperature date 
+modules-center = player-mpris
+modules-right = pulseaudio xkeyboard memory cpu temperature date 
 tray-position = right
 tray-padding = 2
 ;wm-restack = bspwm
@@ -93,14 +95,17 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 modules-left = i3
 modules-center = player-mpris
-modules-right = pulseaudio xkeyboard memory cpu eth temperature date 
+modules-right = pulseaudio memory cpu temperature date 
 cursor-click = pointer
 cursor-scroll = ns-resize
 
 [module/player-mpris]
 type = custom/script
-exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '{icon} {artist} - {title}'
+exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '{icon} {artist} - {title}' -b firefox -b vlc 
 tail = true
+click-left = ~/.config/polybar/scripts/player-mpris-tail.py play-pause &
+click-middle = ~/.config/polybar/scripts/player-mpris-tail.py play-pause &
+click-right = ~/.config/polybar/scripts/player-mpris-tail.py play-pause &
 
 [module/xwindow]
 type = internal/xwindow
@@ -203,35 +208,46 @@ card = intel_backlight
 
 [module/cpu]
 type = internal/cpu
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+interval = 1
+format = <label> <ramp-coreload>
 format-underline = #f90000
-label = %percentage:2%%
+label = %percentage:02%%
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
 
 [module/memory]
 type = internal/memory
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+interval = 1
+format = <label>
 format-underline = #4bffdc
 label = %percentage_used%%
+bar-used-indicator =
+bar-used-width = 50
+bar-used-foreground-0 = #55aa55
+bar-used-foreground-1 = #557755
+bar-used-foreground-2 = #f5a70a
+bar-used-foreground-3 = #ff5555
+bar-used-fill = ▐
+bar-used-empty = ▐
+bar-used-empty-foreground = #444444
 
 [module/wlan]
 type = internal/network
 interface = net1
 interval = 3.0
-
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
 label-connected = %essid%
-
-format-disconnected =
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
-
 ramp-signal-0 = 
 ramp-signal-1 = 
 ramp-signal-2 = 
@@ -242,45 +258,40 @@ ramp-signal-foreground = ${colors.foreground-alt}
 [module/eth]
 type = internal/network
 interface = enp3s0
-interval = 3.0
-
+interval = 0.5
+format-connected = <label-connected>
 format-connected-underline = #55aa55
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+label-connected = %downspeed:9%
+format-disconnected = <label-disconnected>
+label-disconnected = not connected
+format-packetloss = <animation-packetloss> <label-connected>
+animation-packetloss-0 = ⚠
+animation-packetloss-0-foreground = #ffa64c
+animation-packetloss-1 = 📶
+animation-packetloss-1-foreground = #000000
+animation-packetloss-framerate = 500
 
 [module/date]
 type = internal/date
 interval = 5
-
-date =
-date-alt = " %Y-%m-%d"
-
-time = %H:%M
-time-alt = %H:%M:%S
-
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
+date = " %d/%m/%y"
+time = %H:%M:%S
 format-underline = #0a6cf5
-
-label = %date% %time%
+label = %time% %date%
 
 [module/pulseaudio]
 type = internal/pulseaudio
-
-format-volume = <label-volume> <bar-volume>
+format-volume = <label-volume> <ramp-volume>
 label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}
-
 label-muted = 🔇 muted
 label-muted-foreground = #666
-
+click-right = pavucontrol &
+ramp-volume-0 = 🔈
+ramp-volume-1 = 🔉
+ramp-volume-2 = 🔊
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
 bar-volume-foreground-1 = #55aa55
@@ -296,19 +307,16 @@ bar-volume-fill = ─
 bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+bar-volume-empty-foreground = ${colors.dgrey}
 
 [module/alsa]
 type = internal/alsa
-
 format-volume = <label-volume> <bar-volume>
 label-volume = VOL
 label-volume-foreground = ${root.foreground}
-
 format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}
 label-muted = sound muted
-
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
 bar-volume-foreground-1 = #55aa55
@@ -331,77 +339,67 @@ type = internal/battery
 battery = BAT0
 adapter = ADP1
 full-at = 98
-
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = #ffb52a
-
 format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
-
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
-
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
-
+ramp-capacity-foreground = ${colors.dgrey}
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-foreground = ${colors.dgrey}
 animation-charging-framerate = 750
-
 animation-discharging-0 = 
 animation-discharging-1 = 
 animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-foreground = ${colors.dgrey}
 animation-discharging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
-warn-temperature = 60
-
-format = <ramp> <label>
-format-underline = #f50a4d
+warn-temperature = 80
+format = "<label>  <ramp>"
+format-underline = ${module/cpu.format-underline}
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
-
+format-warn-underline = ${module/cpu.format-underline}
 label = %temperature-c%
 label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+label-warn-foreground = ${colors.red}
+ramp-0 = ▁
+ramp-1 = ▂
+ramp-2 = ▃
+ramp-3 = ▄
+ramp-4 = ▅
+ramp-5 = ▆
+ramp-6 = ▇
+ramp-7 = █
+ramp-foreground = ${colors.lgrey}
 
 [module/powermenu]
 type = custom/menu
-
 expand-right = true
-
 format-spacing = 1
-
 label-open = 
 label-open-foreground = ${colors.secondary}
 label-close =  cancel
 label-close-foreground = ${colors.secondary}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
-
 menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
 menu-0-1 = power off
 menu-0-1-exec = menu-open-2
-
 menu-1-0 = cancel
 menu-1-0-exec = menu-open-0
 menu-1-1 = reboot
 menu-1-1-exec = sudo reboot
-
 menu-2-0 = power off
 menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel

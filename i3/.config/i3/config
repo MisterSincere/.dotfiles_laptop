@@ -128,7 +128,7 @@ for_window [class="Steam"]        move to workspace $ws6
 
 # Assign workspaces to screens
 workspace $ws1 output HDMI-0
-workspace $ws2 output DP-2
+workspace $ws2 output HDMI-0
 workspace $ws3 output HDMI-0
 workspace $ws4 output HDMI-0
 workspace $ws5 output DP-2
