@@ -1,0 +1,54 @@
+# mem list of packages
+
+# system / graphical
+xorg xorg-xinit
+intel-ucode
+nvidia nvidia-utils nvidia-settings
+lib32-nvidia-utils [multilib]
+i3-gaps i3status i3blocks
+i3lock-color-git [yay]
+picom
+feh
+dmenu rofi
+
+# standard terminal emulator
+terminator
+
+# theme-ing
+lxappearance
+materia-gtk-theme papirus-icon-theme
+ttf-ubuntu-font-family
+ttf-font-awesome
+ttf-liberation
+ttf-ms-win10 [yay]
+ttf-ms-fonts [yay][legacy]
+
+# more customizable than i3bar
+polybar
+
+# audio
+pulseaudio
+pulseeffects
+pulseaudio-alsa lib32-libpulse lib32-alsa-plugins
+
+# browsing
+firefox thunderbird
+
+# gaming
+steam
+
+# social
+discord
+skypeforlinux-stable-bin [yay]
+whatsapp-nativefier [yay]
+
+# file explorer
+thunar
+
+# yay
+https://aur.archlinux.org/yay.git
+
+# spotify (manual key download)
+curl -sS https://download.spotify.com/debian/pubkey_0D811058.gpg | gpg --import
+spotify
+

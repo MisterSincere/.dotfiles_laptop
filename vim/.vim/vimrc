@@ -65,8 +65,7 @@ set statusline+=\ %y
 "set mouse=a
 
 " mappings
-nmap <F1> :vsplit $MYVIMRC<CR>
-nmap <F2> :vsplit ~/.vim/colors/feeble.vim<CR>
+nmap <F2> :vsplit ~/.vim/vimrc<CR>
 nmap <F5> :source ~/.vim/vimrc<CR>
 
 nmap <leader>gh :diffget //3<CR>
