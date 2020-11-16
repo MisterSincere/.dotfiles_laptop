@@ -49,22 +49,23 @@ height = 30
 fixed-center = false
 background = ${colors.ddgrey}
 foreground = ${colors.white}
-line-size = 2
+line-size = 3
 line-color = #f00
 border-size = 2
 border-color = #00000000
 padding-left = 0
-padding-right = 5
-module-margin-left = 1
-module-margin-right = 2
+padding-right = 1
+module-margin-left = 0
+module-margin-right = 0
 font-0 = fixed:pixelsize=12;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 modules-left = i3
 modules-center = player-mpris
-modules-right = pulseaudio xkeyboard memory cpu temperature date 
+modules-right =  xkeyboard filesystem memory cpu temperature pulseaudio date
 tray-position = right
-tray-padding = 2
+tray-padding = 0
+;tray-detached = true
 ;wm-restack = bspwm
 ;wm-restack = i3
 ;override-redirect = true
@@ -87,15 +88,15 @@ line-color = #f00
 border-size = 2
 border-color = #00000000
 padding-left = 0
-padding-right = 5
-module-margin-left = 1
-module-margin-right = 2
+padding-right = 2
+module-margin-left = 0
+module-margin-right = 0
 font-0 = fixed:pixelsize=12;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 modules-left = i3
 modules-center = player-mpris
-modules-right = pulseaudio memory cpu temperature date 
+modules-right = memory cpu temperature pulseaudio date 
 cursor-click = pointer
 cursor-scroll = ns-resize
 
@@ -114,10 +115,11 @@ label = %title:0:30:...%
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
-format-prefix = " "
+;format-prefix = ""
 format-prefix-foreground = ${colors.foreground-alt}
 format-prefix-underline = ${colors.secondary}
-label-layout = %layout%
+format-margin = 2
+label-layout = " %layout% "
 label-layout-underline = ${colors.secondary}
 label-indicator-padding = 2
 label-indicator-margin = 1
@@ -128,40 +130,38 @@ label-indicator-underline = ${colors.secondary}
 type = internal/fs
 interval = 25
 mount-0 = /
+format-mounted = <label-mounted>
+format-mounted-underline = #0a81f5
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+format-ummounted = <label-umounted>
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
+label-mounted-margin-right = 0
 
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
-
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
-
 label-mode-padding = 3
 label-mode-foreground = ${colors.black}
 label-mode-background = ${colors.lorange}
-
 ; focused = Active workspace on focused monitor
 strip-wsnumbers = true
-label-focused = %index%
+label-focused = %index% %name%
 label-focused-background = ${colors.grey}
 label-focused-underline= ${colors.orange}
 label-focused-padding = 2
-
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index% %name%
 label-unfocused-padding = 2
-
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
+label-visible = %index% %name%
 label-visible-background = ${colors.dgrey}
 label-visible-underline = ${colors.dorange}
 label-visible-padding = 2
-
 ; urgent = Workspace with urgency hint set
 label-urgent = %index% %name%
 label-urgent-background = ${colors.orange}
@@ -226,7 +226,8 @@ type = internal/memory
 interval = 1
 format = <label>
 format-underline = #4bffdc
-label = %percentage_used%%
+format-margin = 2
+label = %percentage_used:02%%
 bar-used-indicator =
 bar-used-width = 50
 bar-used-foreground-0 = #55aa55
@@ -283,9 +284,11 @@ label = %time% %date%
 
 [module/pulseaudio]
 type = internal/pulseaudio
-format-volume = <label-volume> <ramp-volume>
-label-volume = VOL %percentage%%
-label-volume-foreground = ${root.foreground}
+format-volume = <label-volume>
+format-volume-margin = 2
+format-volume-underline = #59981a
+label-volume = %percentage:03%%
+label-volume-foreground = ${colors.white}
 label-muted = 🔇 muted
 label-muted-foreground = #666
 click-right = pavucontrol &
@@ -369,7 +372,7 @@ format = "<label>  <ramp>"
 format-underline = ${module/cpu.format-underline}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${module/cpu.format-underline}
-label = %temperature-c%
+label = "   %temperature-c%"
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.red}
 ramp-0 = ▁

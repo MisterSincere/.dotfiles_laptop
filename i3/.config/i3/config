@@ -191,20 +191,25 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# workspace binding mozilla
-mode "mozilla" {
-  bindsym f exec firefox
-  bindsym t exec thunderbird
+# workspace binding program launch
+mode "launch" {
+  bindsym f exec firefox, mode "default"
+  bindsym t exec thunderbird, mode "default"
+  bindsym s exec spotify, mode "default"
+  bindsym Shift+s exec steam, mode "default"
+  bindsym d exec discord, mode "default"
+  bindsym w exec whatsapp-nativefier, mode "default"
   bindsym Return mode "default"
   bindsym Escape mode "default"
   bindsym $mod+m mode "default"
 }
-bindsym $mod+m mode "mozilla"
+bindsym $mod+m mode "launch"
 
 mode "system" {
-  bindsym l exec ~/.config/i3/lock.sh
-  bindsym s exec shutdown -h now
-  bindsym r exec reboot
+  bindsym e exec i3-msg exit, mode "default"
+  bindsym l exec ~/.config/i3/lock.sh, mode "default"
+  bindsym s exec --no-startup-id systemctl poweroff -i, mode "default"
+  bindsym r exec --no-startup-id systemctl reboot, mode "default"
   bindsym Return mode "default"
   bindsym Escape mode "default"
   bindsym $mod+c mode "default"
@@ -248,29 +253,19 @@ client.urgent		        $orange   $orange     $white  $orange
 #  }
 #}
 
-# Keyboard Layout
-exec_always setxkbmap de
-
-# Xorg - Display Setup 
-exec_always xrandr --output HDMI-0 --panning 1920x1080+0+0
-exec_always xrandr --output DP-2 --mode 2560x1440 --panning 2560x1440+1920+0 --primary
-
-# Display Wallpaper
-exec_always --no-startup-id feh --bg-fill $HOME/images/wp2.jpg
-
-
 # Gaps
 for_window [class=".*"] border pixel 1
 gaps inner 5
 gaps outer 2
 
-# Window Compositor
-exec_always --no-startup-id picom --xrender-sync-fence -i 1 -f -b --config $HOME/.config/picom/config
+# Keyboard Layout
+exec_always --no-startup-id setxkbmap de
 
-# Polybar Launc Script
+# Display Wallpaper
+exec_always --no-startup-id feh --bg-fill $HOME/images/wp2.jpg
+
+# Polybar Launch Script
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-# autotiling
+# i3 autotiling
 exec_always --no-startup-id autotiling
-
-
