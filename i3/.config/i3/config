@@ -112,10 +112,10 @@ set $ws3  "3: Schnacken"
 set $ws4  "4: Inbox"
 set $ws5  "5: Neuland"
 set $ws6  "6: Zocken"
-set $ws7  "7"
-set $ws8  "8"
-set $ws9  "9"
-set $ws10 "10"
+set $ws7  "7:"
+set $ws8  "8:"
+set $ws9  "9:"
+set $ws10 "10:"
 
 # Assign programs to workspaces
 for_window [class="Spotify"]      move to workspace $ws2
@@ -262,7 +262,7 @@ gaps outer 2
 exec_always --no-startup-id setxkbmap de
 
 # Display Wallpaper
-exec_always --no-startup-id feh --bg-fill $HOME/images/wp2.jpg
+exec_always --no-startup-id feh --bg-fill $HOME/images/wp1.jpg
 
 # Polybar Launch Script
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
