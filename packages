@@ -23,13 +23,15 @@ reflector vim git
 xorg xorg-xinit
 nvidia nvidia-utils nvidia-settings
 lib32-nvidia-utils [multilib]
-i3-gaps i3status i3blocks
-i3lock-color-git [yay]
 polybar [yay]
 autotiling [yay]
 picom
 feh
 dmenu rofi
+
+# wm: i3
+i3-gaps i3status i3blocks
+i3lock-color-git [yay]
 
 # standard terminal emulator
 terminator
@@ -57,6 +59,17 @@ firefox thunderbird
 
 # gaming
 steam
+wine wine-gecko wine-mono
+# other possible dependencies
+lib32-mpg123           [multilib]
+lib32-giflib           [multilib]
+lib32-libpng           [multilib]
+lib32-gnutls           [multilib]
+lib32-gst-plugin-base  [multilib]
+lib32-gst-plugins-good [multilib]
+lib32-gst-plugins-bad  [yay]
+lib32-gst-plugins-ugly [yay]
+samba
 
 # social
 discord

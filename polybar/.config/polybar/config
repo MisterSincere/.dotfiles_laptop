@@ -96,9 +96,17 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 modules-left = i3
 modules-center = player-mpris
-modules-right = memory cpu temperature pulseaudio date 
+modules-right = memory gpu cpu temperature pulseaudio date 
 cursor-click = pointer
 cursor-scroll = ns-resize
+
+[module/gpu]
+type = custom/script
+exec = ~/.config/polybar/scripts/gpu_stats.sh
+label = %output%
+format-underline = #50ef39
+format-margin = 2
+interval = 1
 
 [module/player-mpris]
 type = custom/script
@@ -226,7 +234,6 @@ type = internal/memory
 interval = 1
 format = <label>
 format-underline = #4bffdc
-format-margin = 2
 label = %percentage_used:02%%
 bar-used-indicator =
 bar-used-width = 50

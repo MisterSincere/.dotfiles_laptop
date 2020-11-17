@@ -269,3 +269,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # i3 autotiling
 exec_always --no-startup-id autotiling
+
+# temporary
+#exec_always --no-startup-id DISPLAY=":0" picom --xrender-sync-fence -i 1 -f -b --config ~/.config/picom/config
+#exec_always --no-startup-id DISPLAY=":1" picom --xrender-sync-fence -i 1 -f -b --config ~/.config/picom/config
