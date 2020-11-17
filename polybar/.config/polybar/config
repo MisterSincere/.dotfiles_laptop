@@ -62,7 +62,7 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 modules-left = i3
 modules-center = player-mpris
-modules-right =  xkeyboard filesystem memory cpu temperature pulseaudio date
+modules-right =  xkeyboard filesystem memory gpu cpu temperature pulseaudio date
 tray-position = right
 tray-padding = 0
 ;tray-detached = true
@@ -110,7 +110,7 @@ interval = 1
 
 [module/player-mpris]
 type = custom/script
-exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '{icon} {artist} - {title}' -b firefox -b vlc 
+exec = ~/.config/polybar/scripts/player-mpris-tail.py -b firefox -f '{icon} {:artist:t20:{artist}:}{:artist: - :}{:t20:{title}:}'
 tail = true
 click-left = ~/.config/polybar/scripts/player-mpris-tail.py play-pause &
 click-middle = ~/.config/polybar/scripts/player-mpris-tail.py play-pause &
@@ -126,7 +126,6 @@ blacklist-0 = num lock
 ;format-prefix = ""
 format-prefix-foreground = ${colors.foreground-alt}
 format-prefix-underline = ${colors.secondary}
-format-margin = 2
 label-layout = " %layout% "
 label-layout-underline = ${colors.secondary}
 label-indicator-padding = 2
@@ -140,6 +139,8 @@ interval = 25
 mount-0 = /
 format-mounted = <label-mounted>
 format-mounted-underline = #0a81f5
+format-mounted-margin = 2
+format-unmounted-margin = 2
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 format-ummounted = <label-umounted>
 label-unmounted = %mountpoint% not mounted

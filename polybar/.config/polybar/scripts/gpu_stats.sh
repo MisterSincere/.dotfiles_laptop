@@ -8,4 +8,6 @@ memory_total=$( nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounit
 memory=$(( 100 * $memory_used / $memory_total ))
 memory=$( printf "%2.2d" $memory )
 
-echo $utilization% $memory%
+temperature=$( nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits )
+
+echo $utilization% $memory% $temperature°C
