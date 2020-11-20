@@ -65,7 +65,7 @@ picom -i 1 -f -b --config ~/.config/picom/config &
 xset -dpms
 
 # Display Wallpaper
-feh --bg-fill $HOME/images/wp1.jpg &
+feh --bg-fill $HOME/images/wp3.jpg &
 
 # Launch Polybar
 $HOME/.config/polybar/launch.sh &
