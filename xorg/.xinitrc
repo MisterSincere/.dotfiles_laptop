@@ -68,7 +68,7 @@ xset -dpms
 feh --bg-fill $HOME/images/wp3.jpg &
 
 # Launch Polybar
-$HOME/.config/polybar/launch.sh &
+#$HOME/.config/polybar/launch.sh &
 
 # Window Manager
 exec i3

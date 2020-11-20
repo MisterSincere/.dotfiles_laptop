@@ -266,7 +266,7 @@ gaps outer 2
 #exec_always --no-startup-id feh --bg-fill $HOME/images/wp1.jpg
 
 # Polybar Launch Script
-#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # i3 Autotiling
 exec_always --no-startup-id autotiling

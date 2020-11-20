@@ -18,7 +18,7 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #CC363636
+background = #BB363636
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
@@ -42,7 +42,7 @@ red     = #e60053
 [bar/dp2]
 monitor = ${env:MONITOR:DP-2}
 width = 100%
-height = 30
+height = 25
 ;offset-x = 1%
 ;offset-y = 1%
 ;radius = 6.0
@@ -57,8 +57,8 @@ padding-left = 0
 padding-right = 1
 module-margin-left = 0
 module-margin-right = 0
-font-0 = fixed:pixelsize=12;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-0 = fixed:pixelsize=11;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=true;0
 font-2 = siji:pixelsize=10;1
 modules-left = i3
 modules-center = player-mpris
@@ -79,7 +79,7 @@ cursor-scroll = ns-resize
 [bar/hdmi0]
 monitor = ${env:MONITOR:HDMI-0}
 width = 100%
-height = 30
+height = 25
 fixed-center = false
 background = ${colors.ddgrey}
 foreground = ${colors.white}
@@ -91,8 +91,8 @@ padding-left = 0
 padding-right = 2
 module-margin-left = 0
 module-margin-right = 0
-font-0 = fixed:pixelsize=12;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-0 = fixed:pixelsize=11;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=true;0
 font-2 = siji:pixelsize=10;1
 modules-left = i3
 modules-center = player-mpris
@@ -377,7 +377,7 @@ animation-discharging-framerate = 750
 type = internal/temperature
 thermal-zone = 0
 warn-temperature = 80
-format = "<label>  <ramp>"
+format = "<label>"
 format-underline = ${module/cpu.format-underline}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${module/cpu.format-underline}
@@ -426,7 +426,7 @@ screenchange-reload = true
 ;pseudo-transparency = false
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-top = 0
+margin-bottom = 0
 
 ; vim:ft=dosini
