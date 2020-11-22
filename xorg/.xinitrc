@@ -53,22 +53,13 @@ fi
 #xrandr --output DP-2 --mode 2560x1440 --panning 2560x1440+1920+0 --primary
 
 # X Key Bindings 
-xbindkeys
+xbindkeys &
 
 # Keyboard Layout
 setxkbmap de &
 
 # compositor
 picom -i 1 -f -b --config ~/.config/picom/config &
-
-# no display power management signaling
-xset -dpms
-
-# Display Wallpaper
-feh --bg-fill $HOME/images/wp3.jpg &
-
-# Launch Polybar
-#$HOME/.config/polybar/launch.sh &
 
 # Window Manager
 exec i3
