@@ -1,31 +1,4 @@
-;==========================================================
-;
-;
-;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
-;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
-;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
-;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
-;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
-;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
-;
-;
-;   To learn more about how to configure Polybar
-;   go to https://github.com/polybar/polybar
-;
-;   The README contains a lot of information
-;
-;==========================================================
-
 [colors]
-;background = ${xrdb:color0:#222}
-background = #BB363636
-background-alt = #444
-;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
-foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
 ddgrey  = #cc363636
 dgrey   = #ff565656
 grey    = #ff767676
@@ -38,68 +11,80 @@ white   = #ffeeeeee
 black   = #ff000000
 dred    = #bd2c40
 red     = #e60053
+bar_default_bg = ${self.ddgrey}
+bar_default_fg = ${self.white}
+i3_focused_bg  = ${self.grey}
+i3_focused_ul  = ${self.orange}
+i3_visible_bg  = ${colors.dgrey}
+i3_visible_ul  = ${colors.dorange}
+i3_urgent_bg   = ${colors.orange}
+i3_urgent_ul   = ${colors.orange}
+i3_mode_fg     = ${self.black}
+i3_mode_bg     = ${self.lorange}
+
+[properties]
+width = 100%
+height = 28
+line_size = 3
+font_0 = fixed:pixelsize=12;1
+font_1 = unifont:fontformat=truetype:size=10:antialias=true;0
+font_2 = siji:pixelsize=10;1
+border_size = 0
+border_color = #AA000000
 
 [bar/dp2]
-monitor = ${env:MONITOR:DP-2}
-width = 100%
-height = 25
-;offset-x = 1%
-;offset-y = 1%
-;radius = 6.0
-fixed-center = false
-background = ${colors.ddgrey}
-foreground = ${colors.white}
-line-size = 3
-line-color = #f00
-border-size = 2
-border-color = #00000000
-padding-left = 0
-padding-right = 1
-module-margin-left = 0
+monitor             = ${env:MONITOR:DP-2}
+width               = ${properties.width}
+height              = ${properties.height}
+line-size           = ${properties.line_size}
+font-0              = ${properties.font_0}
+font-1              = ${properties.font_1}
+font-2              = ${properties.font_2}
+offset-x            = 0
+offset-y            = 0
+fixed-center        = false
+background          = ${colors.bar_default_bg}
+foreground          = ${colors.bar_default_fg}
+border-bottom-size  = ${properties.border_size}
+border-bottom-color = ${properties.border_color}
+padding-left        = 0
+padding-right       = 1
+module-margin-left  = 0
 module-margin-right = 0
-font-0 = fixed:pixelsize=11;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=true;0
-font-2 = siji:pixelsize=10;1
-modules-left = i3
-modules-center = player-mpris
-modules-right =  xkeyboard filesystem memory gpu cpu temperature pulseaudio date
-tray-position = right
-tray-padding = 0
-;tray-detached = true
-;wm-restack = bspwm
-;wm-restack = i3
-;override-redirect = true
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-cursor-click = pointer
-cursor-scroll = ns-resize
+modules-left        = i3
+modules-center      = player-mpris
+modules-right       = xkeyboard filesystem memory gpu cpu temperature pulseaudio date
+tray-position       = right
+tray-padding        = 0
+cursor-click        = pointer
+cursor-scroll       = ns-resize
 
 [bar/hdmi0]
-monitor = ${env:MONITOR:HDMI-0}
-width = 100%
-height = 25
-fixed-center = false
-background = ${colors.ddgrey}
-foreground = ${colors.white}
-line-size = 2
-line-color = #f00
-border-size = 2
-border-color = #00000000
-padding-left = 0
-padding-right = 2
-module-margin-left = 0
+monitor             = ${env:MONITOR:HDMI-0}
+width               = ${properties.width}
+height              = ${properties.height}
+line-size           = ${properties.line_size}
+font-0              = ${properties.font_0}
+font-1              = ${properties.font_1}
+font-2              = ${properties.font_2}
+offset-x            = 0
+offset-y            = 0
+fixed-center        = false
+background          = ${colors.bar_default_bg}
+foreground          = ${colors.bar_default_fg}
+border-bottom-size  = ${properties.border_size}
+border-bottom-color = ${properties.border_color}
+padding-left        = 0
+padding-right       = 2
+module-margin-left  = 0
 module-margin-right = 0
-font-0 = fixed:pixelsize=11;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=true;0
-font-2 = siji:pixelsize=10;1
-modules-left = i3
-modules-center = player-mpris
-modules-right = memory gpu cpu temperature pulseaudio date 
-cursor-click = pointer
-cursor-scroll = ns-resize
-tray-position = right
+modules-left        = i3
+modules-center      = player-mpris
+modules-right       = memory gpu cpu temperature pulseaudio date 
+tray-position       = right
+tray-padding        = 0
+cursor-click        = pointer
+cursor-scroll       = ns-resize
 
 [module/gpu]
 type = custom/script
@@ -124,15 +109,15 @@ label = %title:0:30:...%
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
-;format-prefix = ""
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
+format = <label-layout> <label-indicator>
+format-prefix-foreground = #555555
+format-prefix-underline = #e60053
 label-layout = " %layout% "
-label-layout-underline = ${colors.secondary}
+label-layout-underline = #e60053
 label-indicator-padding = 2
 label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
+label-indicator-background = #e60053
+label-indicator-underline = #e60053
 
 [module/filesystem]
 type = internal/fs
@@ -145,7 +130,7 @@ format-unmounted-margin = 2
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 format-ummounted = <label-umounted>
 label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
+label-unmounted-foreground = #555555
 label-mounted-margin-right = 0
 
 [module/i3]
@@ -156,50 +141,32 @@ wrapping-scroll = false
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
 label-mode-padding = 3
-label-mode-foreground = ${colors.black}
-label-mode-background = ${colors.lorange}
+label-mode-foreground = ${colors.i3_mode_fg}
+label-mode-background = ${colors.i3_mode_bg}
 ; focused = Active workspace on focused monitor
 strip-wsnumbers = true
 label-focused = %index% %name%
-label-focused-background = ${colors.grey}
-label-focused-underline= ${colors.orange}
+label-focused-background = ${colors.i3_focused_bg}
+label-focused-underline= ${colors.i3_focused_ul}
 label-focused-padding = 2
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index% %name%
 label-unfocused-padding = 2
 ; visible = Active workspace on unfocused monitor
 label-visible = %index% %name%
-label-visible-background = ${colors.dgrey}
-label-visible-underline = ${colors.dorange}
+label-visible-background = ${colors.i3_visible_bg}
+label-visible-underline = ${colors.i3_visible_ul}
 label-visible-padding = 2
 ; urgent = Workspace with urgency hint set
 label-urgent = %index% %name%
-label-urgent-background = ${colors.orange}
-label-urgent-underline = ${colors.orange}
+label-urgent-background = ${colors.i3_urgent_bg}
+label-urgent-underline = ${colors.i3_urgent_ul}
 label-urgent-padding = 2
-
-
-[module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-;host = 127.0.0.1
-;port = 6600
-
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
 
 [module/xbacklight]
 type = internal/xbacklight
-
 format = <label> <bar>
 label = BL
-
 bar-width = 10
 bar-indicator = |
 bar-indicator-foreground = #fff
@@ -209,7 +176,7 @@ bar-fill-font = 2
 bar-fill-foreground = #9f78e1
 bar-empty = ─
 bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
+bar-empty-foreground = #555555
 
 [module/backlight-acpi]
 inherit = module/xbacklight
@@ -263,7 +230,7 @@ ramp-signal-1 = 
 ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
+ramp-signal-foreground = #555555
 
 [module/eth]
 type = internal/network
@@ -272,7 +239,7 @@ interval = 0.5
 format-connected = <label-connected>
 format-connected-underline = #55aa55
 format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected-prefix-foreground = #555555
 label-connected = %downspeed:9%
 format-disconnected = <label-disconnected>
 label-disconnected = not connected
@@ -344,34 +311,7 @@ bar-volume-fill = ─
 bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
-
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = ADP1
-full-at = 98
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
-format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.dgrey}
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.dgrey}
-animation-charging-framerate = 750
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.dgrey}
-animation-discharging-framerate = 750
+bar-volume-empty-foreground = #555555
 
 [module/temperature]
 type = internal/temperature
@@ -399,11 +339,11 @@ type = custom/menu
 expand-right = true
 format-spacing = 1
 label-open = 
-label-open-foreground = ${colors.secondary}
+label-open-foreground = #e60053
 label-close =  cancel
-label-close-foreground = ${colors.secondary}
+label-close-foreground = #e60053
 label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
+label-separator-foreground = #555555
 menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
 menu-0-1 = power off
