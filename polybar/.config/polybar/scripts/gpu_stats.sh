@@ -10,4 +10,5 @@ memory=$( printf "%2.2d" $memory )
 
 temperature=$( nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits )
 
-echo $utilization% $memory% $temperature°C
+echo " "$utilization%"  "$memory_used" MB "$temperature"°C"
+

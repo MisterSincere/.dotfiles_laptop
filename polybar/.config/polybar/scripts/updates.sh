@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-BAR_ICON="UPS"
+BAR_ICON=""
 NOTIFY_ICON=/usr/share/icons/Papirus/32x32/apps/system-software-update.svg
 
-get_total_updates() { UPDATES=$(checkupdates 2>/dev/null | wc -l); }
+get_total_updates() { UPDATES=$(pacman -Qu | wc -l); }
 
 while true; do
     get_total_updates
@@ -26,9 +26,9 @@ while true; do
     # every 10 seconds another check for updates is done
     while (( UPDATES > 0 )); do
         if (( UPDATES == 1 )); then
-            echo "$UPDATES UPDATE"
+            echo " $UPDATES Update"
         elif (( UPDATES > 1 )); then
-            echo "$UPDATES UPDATES"
+            echo " $UPDATES Updates"
         else
             echo $BAR_ICON
         fi
