@@ -319,10 +319,10 @@ thermal-zone = 0
 warn-temperature = 80
 format = "<label>"
 format-underline = ${module/cpu.format-underline}
-format-warn = <ramp> <label-warn>
+format-warn = <label-warn>
 format-warn-underline = ${module/cpu.format-underline}
 label = "   %temperature-c%"
-label-warn = %temperature-c%
+label-warn = "   %temperature-c%
 label-warn-foreground = ${colors.red}
 ramp-0 = ▁
 ramp-1 = ▂
@@ -334,28 +334,16 @@ ramp-6 = ▇
 ramp-7 = █
 ramp-foreground = ${colors.lgrey}
 
-[module/powermenu]
-type = custom/menu
-expand-right = true
-format-spacing = 1
-label-open = 
-label-open-foreground = #e60053
-label-close =  cancel
-label-close-foreground = #e60053
-label-separator = |
-label-separator-foreground = #555555
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
+[module/update]
+type = custom/script
+exec = ~/.config/polybar/scripts/updates.sh
+tail = true
+interval = 5
+format-background = #383838
+format-underline = #272727
+format-overline = #272727
+format-padding = 2
+click-left = ~/.config/polybar/scripts/lupdates &
 
 [settings]
 screenchange-reload = true
