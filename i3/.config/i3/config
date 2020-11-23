@@ -220,12 +220,14 @@ set $dorange    #753A27FF
 set $orange     #FF6A00FF
 set $white      #ffffffFF
 set $black      #000000FF
+set $red        #e53935FF
+set $best       #d2627388
 
 # 			                border		background	text		indicator
-client.focused		      $dorange  $dorange    $white  $orange
+client.focused		      $best     $best       $white  $red
 client.unfocused	      $dgrey    $dgrey      $white  $dgrey
 client.focused_inactive $dgrey    $dgrey      $white  $dgrey
-client.urgent		        $orange   $orange     $white  $orange
+client.urgent		        $red      $red        $white  $red
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -250,8 +252,8 @@ client.urgent		        $orange   $orange     $white  $orange
 
 # Gaps
 for_window [class=".*"] border pixel 1
-gaps inner 5
-gaps outer 2
+gaps inner 0
+gaps outer 0
 
 # Keyboard Layout
 #exec_always --no-startup-id setxkbmap de
