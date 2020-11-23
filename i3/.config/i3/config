@@ -210,6 +210,7 @@ mode "system" {
   bindsym $mod+c mode "default"
 }
 bindsym $mod+c mode "system"
+#bindsym $mod+c exec --no-startup-id ~/.config/i3/scripts/powermenu
 
 # Window Colors
 set $dgrey      #363636CC
