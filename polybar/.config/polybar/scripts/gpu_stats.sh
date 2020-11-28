@@ -1,14 +1,9 @@
 #!/bin/bash
 
-utilization=$( nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits )
-utilization=$( printf "%2.2d" $utilization )
+gpu_utilization=$( nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits )
+gpu_utilization=$( printf "%2.2d" $gpu_utilization )
 
-memory_used=$( nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits )
-memory_total=$( nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits )
-memory=$(( 100 * $memory_used / $memory_total ))
-memory=$( printf "%2.2d" $memory )
+gpu_temperature=$( nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits )
 
-temperature=$( nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits )
-
-echo " "$utilization%"  "$memory_used" MB "$temperature"°C"
+echo $gpu_utilization%" "$gpu_temperature"°C"
 

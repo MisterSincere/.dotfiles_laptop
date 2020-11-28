@@ -164,6 +164,10 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+bindsym Mod4+Tab exec rofi -show window
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
   # These bindings trigger as soon as you enter the resize mode
@@ -193,7 +197,6 @@ mode "launch" {
   bindsym Shift+s exec steam, mode "default"
   bindsym Ctrl+s exec slack, mode "default"
   bindsym d exec discord, mode "default"
-  bindsym w exec whatsapp-nativefier, mode "default"
   bindsym Return mode "default"
   bindsym Escape mode "default"
   bindsym $mod+m mode "default"
@@ -256,6 +259,9 @@ for_window [class=".*"] border pixel 1
 gaps inner 0
 gaps outer 0
 
+# Origin thinks it's special
+for_window [instance="origin.exe"] floating enable
+
 # Keyboard Layout
 #exec_always --no-startup-id setxkbmap de
 
@@ -266,7 +272,7 @@ exec_always --no-startup-id $HOME/.fehbg
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # i3 Autotiling
-exec_always --no-startup-id autotiling
+#exec_always --no-startup-id autotiling
 
 # temporary
 #exec_always --no-startup-id DISPLAY=":0" picom --xrender-sync-fence -i 1 -f -b --config ~/.config/picom/config
