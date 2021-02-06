@@ -18,6 +18,7 @@ cups
 
 # basic other
 reflector vim git
+xbindkeys
 
 # graphical
 xorg xorg-xinit
@@ -36,7 +37,7 @@ i3lock-color-git [yay]
 # standard terminal emulator
 terminator
 
-# theme-ing
+# theme-ing / fonts
 lxappearance
 materia-gtk-theme papirus-icon-theme
 ttf-ubuntu-font-family
@@ -49,6 +50,7 @@ ttf-ms-fonts [yay][legacy]
 pulseaudio
 pulseeffects
 pulseaudio-alsa lib32-libpulse lib32-alsa-plugins
+playerctl
 
 # bluetooth
 bluez bluez-utils
@@ -73,6 +75,7 @@ samba
 
 # social
 discord
+telegram-desktop
 skypeforlinux-stable-bin [yay]
 whatsapp-nativefier [yay]
 slack-desktop [yay]
@@ -80,6 +83,17 @@ slack-desktop [yay]
 # java
 jre-openjdk jdk-openjdk
 openjdk-doc openjdk-src
+
+# vulkan
+nvidia-utils lib32-nvidia-utils
+vulkan-icd-loader lib32-vulkan-icd-loader
+vulkan-headers vulkan-validation-layers vulkan-tools
+
+# zipping / rar
+xarchiver
+p7zip
+zip unzip
+unrar
 
 # file explorer
 thunar

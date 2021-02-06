@@ -59,7 +59,7 @@ xbindkeys &
 setxkbmap de &
 
 # compositor
-picom -i 1 -f -b --config ~/.config/picom/config &
+picom -i 1 -f -b --config ~/.config/picom/picom.conf &
 
 # Window Manager
 exec i3
