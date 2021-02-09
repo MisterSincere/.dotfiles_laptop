@@ -95,6 +95,9 @@ p7zip
 zip unzip
 unrar
 
+# screenshots / screenshooter
+xfce4-screenshooter
+
 # file explorer
 thunar
 
