@@ -95,7 +95,7 @@ element normal.urgent {
 }
 
 element normal.active {
-	background-color: @active-background;
+	background-color: @normal-background;
 	text-color:       @active-foreground;
 }
 
@@ -112,8 +112,10 @@ element selected.urgent {
 }
 
 element selected.active {
-	background-color: @selected-active-background;
-	text-color:       @selected-active-foreground;
+	background-color: @normal-background;
+	text-color:       #df02df;
+	border:           1px 5px solid 1px 1px;
+	border-color:	    @active-background;
 }
 
 element alternate.normal {
