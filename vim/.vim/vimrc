@@ -1,7 +1,7 @@
 " plugins
 call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
-Plug 'jremmen/vim-ripgrep'
+"Plug 'jremmen/vim-ripgrep'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-utils/vim-man'
 Plug 'lyuts/vim-rtags'
@@ -22,9 +22,9 @@ let g:ctrlp_use_caching = 0
 let mapleader = " "
 
 " how to open files, no extra information, winsize about 25%
-let g:netrw_browse_split=2
-let g:netrw_banner = 0
-let g:netrw_winsize = 25
+"let g:netrw_browse_split=2
+"let g:netrw_banner = 0
+"let g:netrw_winsize = 25
 
 let g:ycm_enable_diagnostic_highlighting = 0
 let g:ycm_enable_diagnostic_signs = 0
@@ -73,18 +73,20 @@ nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
 
 nnoremap <leader>n :nohlsearch<CR>
-"nnoremap <leader>h :wincmd h<CR>
-"nnoremap <leader>j :wincmd j<CR>
-"nnoremap <leader>k :wincmd k<CR>
-"nnoremap <leader>l :wincmd l<CR>
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
+nnoremap <leader>s :w<CR>
+nnoremap <leader>q :q<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>pv :wincmd v<bar> :wincmd h<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <leader>ps :Rg<SPACE>
 nnoremap <silent> <leader>+ :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
 
-nnoremap <silent> <leader>gd :YcmCompleter GoTo<CR>
-nnoremap <silent> <leader>gf :YcmCompleter FixIt<CR>
+"nnoremap <silent> <leader>gd :YcmCompleter GoTo<CR>
+"nnoremap <silent> <leader>gf :YcmCompleter FixIt<CR>
 
 imap jj <esc>
 

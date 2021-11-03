@@ -14,7 +14,7 @@ configuration {
 * {
 	background-color:            #080808;
 	text-color:                  #d3d7cf;
-	selbg:                       #ff6a00;
+	selbg:                       #df20df;
 	actbg:                       #262626;
 	urgbg:                       #e53935;
 	winbg:			                 #c9380c;
@@ -40,7 +40,7 @@ configuration {
 	hide-scrollbar:              "true";
 	margin:                      0;
 	padding:                     0;
-  font:                        "Ubuntu Regular 12";
+  font:                        "Ubuntu Medium 14";
 }
 
 window {
@@ -100,9 +100,9 @@ element normal.active {
 }
 
 element selected.normal {
-	background-color: @selected-normal-background;
+	background-color: @normal-background;
 	text-color:       @selected-normal-foreground;
-	border:           0 5px solid 0 0;
+	border:           1px 5px solid 1px 1px;
 	border-color:	    @active-background;
 }
 

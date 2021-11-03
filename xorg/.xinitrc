@@ -54,13 +54,6 @@ fi
 
 # X Key Bindings 
 xbindkeys &
-
-# Keyboard Layout
 setxkbmap de &
-
-# compositor
 picom -i 1 -f -b --config ~/.config/picom/picom.conf &
-
-# Window Manager
 exec i3
-#exec xmonad
