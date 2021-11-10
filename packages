@@ -2,7 +2,7 @@
 
 # basic
 base base-devel linux linux-firmware
-intel-ucode
+intel-ucode amd-ucode
 networkmanager network-manager-applet
 wireless_tools wpa_supplicant
 openssh
@@ -15,6 +15,7 @@ ntfs-3g
 dialog
 mtools
 cups
+btrfs-progs
 
 # basic other
 reflector vim git
@@ -67,7 +68,7 @@ lib32-mpg123           [multilib]
 lib32-giflib           [multilib]
 lib32-libpng           [multilib]
 lib32-gnutls           [multilib]
-lib32-gst-plugin-base  [multilib]
+lib32-gst-plugins-base  [multilib]
 lib32-gst-plugins-good [multilib]
 lib32-gst-plugins-bad  [yay]
 lib32-gst-plugins-ugly [yay]
