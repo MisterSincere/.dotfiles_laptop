@@ -47,7 +47,8 @@ bindsym $mod+Return exec terminator
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+d exec rofi -show run -sidebar 
+#bindsym $mod+d exec rofi -show run -sidebar 
+bindsym $mod+d exec $HOME/.config/rofi/launchers/colorful/launcher.sh
 
 # change focus
 bindsym $mod+h focus left
@@ -102,34 +103,36 @@ bindsym $mod+o focus child
 # We use variables to avoid repeating the names in multiple places.
 set $ws1  "1: Terminal"
 set $ws2  "2: Neuland"
-set $ws3  "3: Spotify"
-set $ws4  "4: Schnacken"
-set $ws5  "5: Zocken"
-set $ws6  "6: Inbox"
-set $ws7  "7:"
+set $ws3  "3: Chillspace"
+set $ws4  "4: Spotify"
+set $ws5  "5: Schnacken"
+set $ws6  "6: Zocken"
+set $ws7  "7: Inbox"
 set $ws8  "8:"
 set $ws9  "9:"
 set $ws10 "10:"
 
 # Assign programs to workspaces
 # use xprop
-for_window [class="Spotify"]      move to workspace $ws3
-for_window [class="discord"]      move to workspace $ws4
-for_window [class="Slack"]        move to workspace $ws4
-for_window [class="whatsapp-nativefier-d40211"] move to workspace $ws4
-for_window [class="Skype"]        move to workspace $ws4
-for_window [class="Thunderbird"]  move to workspace $ws6
-for_window [class="Telegram"]     move to workspace $ws4
-for_window [class="Steam"]        move to workspace $ws5
-#for_window [class="firefox"]      move to workspace $ws2
+for_window [class="firefox"]                    move to workspace $ws2
+for_window [class="jetbrains-clion"]            move to workspace $ws3
+for_window [class="Spotify"]                    move to workspace $ws4
+for_window [class="discord"]                    move to workspace $ws5
+for_window [class="Slack"]                      move to workspace $ws5
+for_window [class="whatsapp-nativefier-d40211"] move to workspace $ws5
+for_window [class="Skype"]                      move to workspace $ws5
+for_window [class="Telegram"]                   move to workspace $ws5
+for_window [class="Steam"]                      move to workspace $ws6
+for_window [class="Thunderbird"]                move to workspace $ws7
 
 # Assign workspaces to screens
 workspace $ws1 output DP-2
 workspace $ws2 output DP-2
-workspace $ws3 output HDMI-0
+workspace $ws3 output DP-2
 workspace $ws4 output HDMI-0
 workspace $ws5 output HDMI-0
 workspace $ws6 output HDMI-0
+workspace $ws7 output HDMI-0
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1

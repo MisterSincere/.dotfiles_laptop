@@ -1,8 +1,6 @@
+/** Basic config file **/
+
 configuration {
-	show-icons: true;
-	sidebar-mode: true;
-	theme: "~/.config/rofi/sidetab_mod";
-	display-window: "Window";
-	display-run: "Execute";
-	display-drun: "Activate";
+  show-icons:         true;
+  icon-theme:         "Papirus";
 }

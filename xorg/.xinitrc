@@ -56,5 +56,5 @@ fi
 xbindkeys &
 setxkbmap de &
 picom -i 1 -f -b --config ~/.config/picom/picom.conf &
-xinput --set-prop 11 299 -0.5 &
+xinput --set-prop 11 299 -0.6 &
 exec i3
