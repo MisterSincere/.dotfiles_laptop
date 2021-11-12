@@ -48,13 +48,11 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-# Xorg - Display Setup 
-#xrandr --output HDMI-0 --panning 1920x1080+0+0
-#xrandr --output DP-2 --mode 2560x1440 --panning 2560x1440+1920+0 --primary
-
 # X Key Bindings 
 xbindkeys &
 setxkbmap de &
 picom -i 1 -f -b --config ~/.config/picom/picom.conf &
 xinput --set-prop 11 299 -0.6 &
+
 exec i3
+

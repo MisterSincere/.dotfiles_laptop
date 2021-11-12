@@ -257,7 +257,7 @@ for_window [instance="origin.exe"] floating enable
 #exec_always --no-startup-id setxkbmap de
 
 # Display Wallpaper
-exec_always --no-startup-id feh --bg-fill $HOME/images/wp3.jpg
+exec_always --no-startup-id feh --bg-fill $HOME/images/wp1.jpg
 
 # Polybar Launch Script
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
