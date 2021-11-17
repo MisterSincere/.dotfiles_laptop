@@ -1,6 +1,7 @@
 [global_config]
-  smart_copy = True
+  clear_select_on_copy = True
 [keybindings]
+  copy = <Ctrl>S
 [profiles]
   [[default]]
     background_darkness = 0.94
@@ -18,4 +19,5 @@
     [[[child1]]]
       type = Terminal
       parent = window0
+      profile = default
 [plugins]

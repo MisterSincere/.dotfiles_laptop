@@ -33,7 +33,7 @@ dmenu rofi
 
 # wm: i3
 i3-gaps i3status i3blocks
-i3lock-color-git [yay]
+i3lock-color [yay]
 
 # standard terminal emulator
 terminator
@@ -52,6 +52,10 @@ pulseaudio
 pulseeffects
 pulseaudio-alsa lib32-libpulse lib32-alsa-plugins
 playerctl
+# or instead
+pipewire
+pipewire-alsa
+pipewire-pulse
 
 # bluetooth
 bluez bluez-utils
