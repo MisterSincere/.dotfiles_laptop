@@ -249,8 +249,9 @@ client.urgent		        $red      $red        $white  $red
 
 # Gaps
 for_window [class=".*"] border pixel 2
-gaps inner 0
-gaps outer 5
+gaps inner 8
+gaps outer 8
+gaps top 50
 
 # Origin thinks it's special
 for_window [instance="origin.exe"] floating enable
@@ -260,7 +261,7 @@ for_window [instance="Raft"] floating enable
 #exec_always --no-startup-id setxkbmap de
 
 # Display Wallpaper
-exec_always --no-startup-id feh --bg-fill $HOME/images/wp1.jpg
+exec_always --no-startup-id feh --bg-fill $HOME/images/wp4.jpg
 
 # Polybar Launch Script
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
