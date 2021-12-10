@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -48,7 +48,7 @@ bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
 #bindsym $mod+d exec rofi -show run -sidebar 
-bindsym $mod+d exec $HOME/.config/rofi/launchers/colorful/launcher.sh
+bindsym $mod+d exec $HOME/.config/rofi/scripts/start_launcher.sh
 
 # change focus
 bindsym $mod+h focus left
@@ -83,9 +83,10 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
+
+bindsym $mod+q exec --no-startup-id nautilus
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -174,10 +175,31 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-bindsym $mod+Tab exec --no-startup-id i3-cycle-focus.py --switch
-bindsym Mod4+Tab exec rofi -show window
+bindsym Mod1+Tab workspace next
+bindsym Mod1+Shift+Tab workspace prev
+bindsym $mod+Tab exec rofi -show window
 
-bindsym Mod4+s exec xfce4-screenshooter 
+# projection / monitor selection
+bindsym $mod+Shift+p exec ~/.config/rofi/scripts/project_to.sh
+
+# audio output selection
+bindsym $mod+a exec ~/.config/rofi/scripts/start_sel_audio_out.sh
+#bindsym $mod+a exec rofi -show Output -modi "Output:~/.config/rofi/scripts/sel_audio_out.sh" -i -font "Ubuntu Light 14" -hide-scrollbar
+
+# most used screenshot for me
+bindsym $mod+s exec maim -s -u | xclip -selection clipboard -t image/png -i
+bindsym $mod+Shift+s exec exec ~/.config/rofi/scripts/start_screen_cap.sh
+
+# screenshot
+#mode "screenshot" {
+#  bindsym d exec ~/.config/rofi/scripts/start_screen_cap_file.sh, mode "default"
+#  bindsym c exec ~/.config/rofi/scripts/start_screen_cap_clipboard.sh, mode "default"
+#  
+#  bindsym Return mode "default"
+#  bindsym Escape mode "default"
+#  bindsym $mod+r mode "default"
+#}
+#bindsym $mod+Shift+s mode "screenshot"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -217,11 +239,13 @@ mode "launch" {
 }
 bindsym $mod+m mode "launch"
 
+set $locker ~/.config/i3/lock.sh && sleep 1
 mode "system" {
   bindsym e exec i3-msg exit, mode "default"
   bindsym l exec ~/.config/i3/lock.sh, mode "default"
-  bindsym s exec --no-startup-id systemctl poweroff -i, mode "default"
+  bindsym p exec --no-startup-id systemctl poweroff -i, mode "default"
   bindsym r exec --no-startup-id systemctl reboot, mode "default"
+  bindsym s exec --no-startup-id $locker && systemctl suspend, mode "default"
   bindsym Return mode "default"
   bindsym Escape mode "default"
   bindsym $mod+c mode "default"
@@ -260,7 +284,7 @@ for_window [instance="Raft"] floating enable
 #exec_always --no-startup-id setxkbmap de
 
 # Display Wallpaper
-exec_always --no-startup-id feh --bg-fill $HOME/images/wp1.jpg
+exec_always --no-startup-id feh --bg-fill $HOME/images/wp6.jpg
 
 # Polybar Launch Script
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh

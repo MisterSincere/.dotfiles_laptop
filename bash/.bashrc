@@ -27,3 +27,4 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
+alias cg="bash ~/programming/cg_helper_script.sh"
