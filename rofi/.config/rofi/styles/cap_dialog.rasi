@@ -1,5 +1,0 @@
-@import "dialog.rasi"
-
-window {
-  width: 				  	12%;
-}

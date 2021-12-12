@@ -47,7 +47,6 @@ bindsym $mod+Return exec terminator
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
-#bindsym $mod+d exec rofi -show run -sidebar 
 bindsym $mod+d exec $HOME/.config/rofi/scripts/start_launcher.sh
 
 # change focus

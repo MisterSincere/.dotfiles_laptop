@@ -196,7 +196,7 @@
     max_icon_size = 64
 
     # Paths to default icons.
-    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/:/home/kaffeekind/.local/share/icons/
 
     ### History ###
 
@@ -295,14 +295,14 @@
     background = "#111111F0"
     foreground = "#FFFFFFFF"
     frame_color = "#FF9FFF"
-    timeout = 10
+    timeout = 4
     # Icon for notifications with low urgency, uncomment to enable
     #new_icon = /path/to/icon
 
 [urgency_normal]
     background = "#111111ff"
     foreground = "#FFFFFFFF"
-    timeout = 10
+    timeout = 4
     # Icon for notifications with normal urgency, uncomment to enable
     #new_icon = /path/to/icon
 
