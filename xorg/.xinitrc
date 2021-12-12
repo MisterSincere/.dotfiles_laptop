@@ -34,7 +34,7 @@ fi
 # X Key Bindings 
 xbindkeys &
 setxkbmap de &
-picom --config ~/.config/picom/picom.conf --experimental-backends &
+picom --config ~/.config/picom/picom.conf &
 xinput --set-prop 11 299 -0.8 &
 
 exec i3
