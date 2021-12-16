@@ -82,10 +82,10 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+w layout toggle tabbed split
+bindsym $mod+Shift+w layout toggle split splitv
 
-bindsym $mod+q exec --no-startup-id nautilus
+bindsym $mod+e exec --no-startup-id nautilus
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -283,7 +283,7 @@ for_window [instance="Raft"] floating enable
 #exec_always --no-startup-id setxkbmap de
 
 # Display Wallpaper
-exec_always --no-startup-id feh --bg-fill $HOME/images/wp6.jpg
+exec_always --no-startup-id feh --bg-fill $HOME/Pictures/wp6.jpg
 
 # Polybar Launch Script
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
