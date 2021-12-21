@@ -80,14 +80,14 @@ esac
 
 # making pacman faster: querying best mirrorlist and enabling parallel download
 echo -e "\n-- Enabling network time synchronization"
-#timedatectl set-ntp true
+#Ctimedatectl set-ntp true
 echo -e "-- Setting up mirros for optimal download"
 cp  /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-#reflector -a 48 -c $country -l 20 --sort rate --save /etc/pacman.d/mirrorlist
+#Creflector -a 48 -c $country -l 20 --sort rate --save /etc/pacman.d/mirrorlist
 echo "-- Enabling parallel pacman downloads for install"
-#sed -i 's/^#Para/Para/' /etc/pacman.conf
+#Csed -i 's/^#Para/Para/' /etc/pacman.conf
 
-
+# make sure /mnt exists and nothing is mounted
 mkdir /mnt &>/dev/null
 umount -R /mnt &>/dev/null
 
@@ -230,23 +230,59 @@ fi
 echo -e "$top_row\n$boot_row\n$sys_row\n$home_row" | column -t -s "|"
 
 valid=0
+echo -e "Choose action:"
+echo -e "    [0] Perform action according to these summary"
+echo -e "    [1] Skip (get to next chapter without doing anything)"
+echo -e "    [2] Back (start this chapter again)"
 while (( $valid == 0 )); do
   read -p "Continue [y/n]? " answer
   case $answer in
-    y|Y|yes|Yes|YES)
+    0)
       valid=1
-      continue
       ;;
-    n|N|no|No|NO)
-      echo "Aborting..."
-      exit 0
+    *)
+      valid=0
+      echo "Not yet implemented"
       ;;
   esac
 done
 
-echo "TODO: do actual stuff here"
 
-
- 
+case $answer in
+  0)
+    # boot formatting
+    if (( $format_boot_partition == 1 )); then
+      echo "-- Formatting boot partition '$boot_partition' (vfat)"
+      #Cmkfs.fat -F32 $boot_partition
+    else
+      echo "-- Skipping formatting of boot partition"
+    fi
+    # sys formatting
+    if (( $format_sys_partition == 1 )); then
+      if [ $sys_partition_fs -eq "btrfs" ]; then
+        echo "-- Formatting system partition '$sys_partition' (btrfs)"
+        #Cmkfs.btrfs $sys_partition &>/dev/null
+        echo "-- Creating btrfs root subvolume '@' on '$sys_partition'"
+        #Cmount $sys_partition /mnt &>/dev/null
+        pushd /mnt &>/dev/null
+        #Cbtrfs subvolume create @ &>/dev/null
+        popd &>/dev/null
+        #Cumount /mnt &>/dev/null
+        if 
+      elif [ $sys_partition_fs -eq "ext4" ]; then
+        echo "-- Formatting '$sys_partition' (ext4)"
+        #Cmkfs.ext4 -L ROOT $sys_partition
+      fi
+    else
+      echo "-- Skipping formatting of system partition" 
+    fi
+    ;;
+  1)
+    #TODO do i need to do smth here?
+    ;;
+  2)
+    #TODO soooo, how do i do this best / quickest?
+    ;;
+esac
 
 
