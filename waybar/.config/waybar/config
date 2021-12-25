@@ -1,0 +1,116 @@
+// -*- mode: json -*-
+
+{
+	"layer": "top",
+	"position": "top",
+
+	"modules-left": [
+		"sway/workspaces",
+		"custom/right-arrow-dark"
+	],
+	"modules-center": [
+		"custom/left-arrow-dark",
+		"clock#1",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark-o",
+		"clock#2",
+		"custom/right-arrow-dark-o",
+		"custom/right-arrow-light",
+		"clock#3",
+		"custom/right-arrow-dark"
+	],
+	"modules-right": [
+		"custom/left-arrow-dark",
+		"pulseaudio",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark-o",
+		"cpu",
+    "temperature",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark-o",
+		"memory",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark-o",
+		"disk",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark-o",
+		"tray"
+	],
+
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"format": "{value} "
+	},
+
+	"clock#1": {
+		"format": "{:%a}",
+		"tooltip": false
+	},
+	"clock#2": {
+		"format": "{:%H:%M}",
+		"tooltip": false
+	},
+	"clock#3": {
+		"format": "{:%d-%m}",
+		"tooltip": false
+	},
+
+	"pulseaudio": {
+		"format": "{volume:2}%",
+		"format-bluetooth": "{volume}%",
+		"format-muted": "MUTE",
+		"scroll-step": 5,
+		"on-click": "pamixer -t",
+		"on-click-right": "pavucontrol"
+	},
+	"cpu": {
+		"interval": 1,
+		"format": "CPU {usage:02}%"
+	},
+  "temperature": {
+    "format": "{temperatureC}°C",
+    "interval": 1
+  },
+	"memory": {
+		"interval": 5,
+		"format": " {percentage:02}%"
+	},
+	"disk": {
+		"interval": 5,
+    "format": " {percentage_used:02}%",
+		"path": "/"
+	},
+	"tray": {
+		"icon-size": 20
+	},
+
+	"custom/left-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/left-arrow-dark-o": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/left-arrow-light": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-dark-o": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-light": {
+		"format": "",
+		"tooltip": false
+	},
+
+  "custom/gpu": {
+    "return-type": "json",
+    "exec": "$HOME/.config/waybar/gpu.sh"
+  }
+}
