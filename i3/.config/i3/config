@@ -101,13 +101,13 @@ bindsym $mod+o focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1  "1: Terminal"
-set $ws2  "2: Neuland"
-set $ws3  "3: Chillspace"
-set $ws4  "4: Spotify"
-set $ws5  "5: Schnacken"
-set $ws6  "6: Zocken"
-set $ws7  "7: Inbox"
+set $ws1  "1:  "
+set $ws2  "2:  "
+set $ws3  "3:  "
+set $ws4  "4:  "
+set $ws5  "5:  "
+set $ws6  "6:  "
+set $ws7  "7: Zocken"
 set $ws8  "8:"
 set $ws9  "9:"
 set $ws10 "10:"
@@ -124,9 +124,9 @@ for_window [class="Signal"]                     move to workspace $ws5
 for_window [class="whatsapp-nativefier-d40211"] move to workspace $ws5
 for_window [class="Skype"]                      move to workspace $ws5
 for_window [class="Telegram"]                   move to workspace $ws5
-for_window [class="Steam"]                      move to workspace $ws6
-for_window [class="Lutris"]                     move to workspace $ws6
-for_window [class="Thunderbird"]                move to workspace $ws7
+for_window [class="Thunderbird"]                move to workspace $ws6
+for_window [class="Steam"]                      move to workspace $ws7
+for_window [class="Lutris"]                     move to workspace $ws7
 
 # Assign workspaces to screens
 # nope not on laptop (single monitor)

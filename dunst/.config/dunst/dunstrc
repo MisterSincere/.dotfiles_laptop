@@ -30,10 +30,10 @@
     height = 300
 
     # Position the notification in the top right corner
-    origin = bottom-left
+    origin = top-right
 
     # Offset from the origin
-    offset = 0x0
+    offset = 0x24
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -97,7 +97,7 @@
     #  * foreground: use the same color as the foreground;
     #  * frame: use the same color as the frame;
     #  * anything else will be interpreted as a X color.
-    separator_color = "#555555"
+    separator_color = auto
 
     # Sort messages by urgency.
     sort = yes
