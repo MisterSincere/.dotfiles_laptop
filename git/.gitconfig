@@ -1,5 +1,6 @@
 [alias]
 	st = status
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit
 [user]
 	name = Nikkel Heesen
 	email = n.heesen@tu-bs.de

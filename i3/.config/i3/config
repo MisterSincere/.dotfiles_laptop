@@ -229,13 +229,13 @@ mode "launch" {
 }
 bindsym $mod+m mode "launch"
 
-set $locker ~/.config/i3/lock.sh && sleep 1
+set $locker ~/.config/i3/scripts/lock.sh
 mode "system" {
   bindsym e exec i3-msg exit, mode "default"
-  bindsym l exec ~/.config/i3/lock.sh, mode "default"
+  bindsym l exec $locker, mode "default"
   bindsym p exec --no-startup-id systemctl poweroff -i, mode "default"
   bindsym r exec --no-startup-id systemctl reboot, mode "default"
-  bindsym s exec --no-startup-id $locker && systemctl suspend, mode "default"
+  bindsym s exec --no-startup-id $locker && sleep 1 && systemctl suspend, mode "default"
   bindsym Return mode "default"
   bindsym Escape mode "default"
   bindsym $mod+c mode "default"
@@ -279,3 +279,5 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # dunst
 exec_always --no-startup-id /usr/bin/dunst
+
+exec_always --no-startup-id $HOME/.config/polybar/scripts/checkupdates.sh
