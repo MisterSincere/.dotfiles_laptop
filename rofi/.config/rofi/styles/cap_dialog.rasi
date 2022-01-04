@@ -1,7 +1,7 @@
 @import "dialog.rasi"
 
 window {
-  width: 				  	12%;
+  width: 				  	15%;
 }
 
 entry {
