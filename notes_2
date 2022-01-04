@@ -1,0 +1,213 @@
+triangle normals: whats with the triangle normals in the given solution
+iplane normals  : no direction check?
+box intersection: how many minuspoints for no foremost primitive check and storing wrong ray "length"
+
+group_01:
+  - normals: 
+    - box correct
+    - triangle correct 
+    - sphere correct (TODO though the direction check will always be true and is thus not necessary)
+    - plane correct (direction check done)
+  - refraction:
+    - remaining bounces: check
+    - correct refraction index: check
+    - reverse normal when from inside: ?
+    - decide between reflection and refraction: check
+  - mirror: correct (slight movement into normal direction is one possibility, you can also just subtract an epsilon value from the length)
+
+group_02:
+  - normals:
+    - box correct (top normals flipped, but that's not a problem)
+    - triangle correct
+    - sphere correct
+    - plane correct
+  - refraction:
+    - remaining bounces: check
+    - correct refraction index: check
+    - reverse normal when from inside:  check
+    - decide between reflection and refraction: check
+    TODO: it is slightly different than the solution
+  - mirror: correct
+
+group_03:
+  - normals:
+    - box correct (though complicated)
+    - triangle correct
+    - sphere correct
+    - plane correct
+  - refraction:
+    - remaining bounces: no
+    - correct refraction index: yes
+    - reverse normal when from inside: yes
+    - decide between reflection and refraction: yes
+  - mirror: correct
+
+group_05:
+  - normals:
+    - box correct
+    - triangle correct
+    - sphere correct
+    - plane correct
+  - refraction:
+    - remaining bounces: no
+    - correct refraction index: yes
+    - reverse normal when from inside: exactly the other way around
+    - decide between reflection and refraction: yes
+    - overload due to tracing of reflection vector even if not necessary
+  - mirror: correct
+
+group_06:
+  - normals:
+    - box wrong: coef is always one thus you choose the wrong box orientation
+    - triangle correct
+    - sphere correct
+    - plane correct (normals are already normalized, no need to do it again)
+  - refraction:
+    - remaining bounces: yes
+    - correct refraction index: no
+    - reverse normal when from inside: no
+    - decide between reflection and refraction: no radicant computed
+    - wrong refraction vector
+  - mirror: missing epsilon offset, no copy of remaining bounces
+
+group_08:
+  - normals:
+    - box correct
+    - triangle correct
+    - sphere correct
+    - plane correct (normals are already normalized, no need to do it again)
+  - refraction:
+    - remaining bounces: no
+    - correct refraction index: yes
+    - reverse normal when from inside: yes
+    - decide between reflection and refraction: yes
+  - mirror: correct (missing epsilon offset, copy of remaining bounces)
+
+group_09:
+  - normals:
+    - box correct
+    - triangle correct
+    - sphere correct
+    - plane correct
+  - refraction:
+    - remaining bounces: no
+    - correct refraction index: yes
+    - reverse normal when from inside: yes
+    - decide between reflection and refraction: yes
+    - reflection vector not computed
+  - mirror: correct (missing epsilon offset)
+
+group_10:
+  - normals:
+    - box correct
+    - triangle correct
+    - sphere correct
+    - plane correct (normals are already normalized, no need to do it again)
+  - refraction:
+    - remaining bounces: no
+    - correct refraction index: yes
+    - reverse normal when from inside: yes (but cos is completely the other way around?!?!?!)
+    - decide between reflection and refraction: yes
+  - mirror: correct (missing epsilon offset, copy of remaining bounces)
+
+group_11:
+  - normals:
+    - box half correct (only considered 3 orientations)
+    - triangle correct
+    - sphere correct
+    - plane correct
+  - refraction:
+    - remaining bounces: no
+    - correct refraction index: yes
+    - reverse normal when from inside: yes
+    - decide between reflection and refraction: yes
+  - mirror: correct
+
+group_12:
+  - box: no check for foremost primitive
+  - normals:
+    - box: normals depending directly on ray direction, which box side to choose depends on the ray, but for a box there are 6 sides, which are represented by unit vectors and their negative counterparts.
+    - triangle: no normal set
+    - sphere: normalization missing and normal direction is inverted
+    - plane correct
+  - refraction:
+    - remaining bounces: no
+    - correct refraction index: no
+    - reverse normal when from inside: no
+    - decide between reflection and refraction: yes (but no reflection vector implemented)
+    - ???
+  - mirror: correct (missing epsilon offset, copy of remaining bounces)
+
+group_13:
+  - box: missing check for foremost primitive
+  - normals:
+    - box correct
+    - triangle correct
+    - sphere correct
+    - plane correct (normals are already normalized, no need to do it again)
+  - refraction:
+    - remaining bounces: no
+    - correct refraction index: no
+    - reverse normal when from inside: no
+    - decide between reflection and refraction: yes
+    - ???
+  - mirror: correct
+
+group_14:
+  - box: missing check for foremost primitive 
+  - normals:
+    - box only considering 3 orientations
+    - triangle correct
+    - sphere normalizaton missing and division by radius unnecessary
+    - plane correct
+  - refraction:
+    - remaining bounces: no
+    - correct refraction index: ?
+    - reverse normal when from inside: ?
+    - decide between reflection and refraction: no (radikand nicht berechnet)
+  - mirror: half
+    - origin of the reflected ray is not the same as the origin of the incoming ray
+    - epsilon offset missing
+    - remaining bounces not copied
+
+group_15:
+  - normals:
+    - box correct
+    - triangle correct
+    - sphere correct
+    - plane correct (normals are already normalized, no need to do it again)
+  - refraction:
+    - remaining bounces: no
+    - correct refraction index: yes
+    - reverse normal when from inside: yes
+    - decide between reflection and refraction: yes
+  - mirror: correct
+  - shading / pointlight:
+    - no backface culling (from image)
+
+group_16:
+  - nothing... i mean exercise 2 frameworks isn't even there?
+  - but no commits for exercise 2 have been pushed
+
+group_17:
+  - box: wrong comparison for foremost primitive check and storing as length of ray; should be length 'tin' not a point
+  - normals:
+    - they did nothing...
+  - refraction:
+    - remaining bounces: ?
+    - correct refraction index: ?
+    - reverse normal when from inside: ?
+    - decide between reflection and refraction: ?
+  - mirror: correct (nothing to see because no normals)
+
+
+
+
+
+
+
+
+
+
+
+
