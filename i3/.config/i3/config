@@ -80,8 +80,8 @@ set $ws2  "2:  "
 set $ws3  "3:  "
 set $ws4  "4:  "
 set $ws5  "5:  "
-set $ws6  "6: Zocken"
-set $ws6  "6:  "
+set $ws6  "6:  "
+set $ws7  "7:  "
 set $ws8  "8:"
 set $ws9  "9:"
 set $ws10 "10:"
@@ -244,7 +244,7 @@ for_window [instance="Raft"] floating enable
 #exec_always --no-startup-id setxkbmap de
 
 # Display Wallpaper
-exec_always --no-startup-id feh --bg-fill $HOME/Pictures/wp6.jpg
+exec_always --no-startup-id feh --bg-fill $HOME/Pictures/wp3.jpg
 
 # Polybar Launch Script
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh

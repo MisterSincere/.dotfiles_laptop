@@ -1,7 +1,4 @@
-#!/usr/bin/env bash
-
-#TODO catch if the same partition was entered for different purposes
-#TODO catch if final filesystem from home and sys partition differ
+#!/bin/bash
 
 check_partition_choice () {
   case $1 in
@@ -34,66 +31,10 @@ to_symbol () {
   fi
 }
 
-echo "MAKE SURE THAT:"
-echo -e "\t- you have your desired partitions ready (formatting will be done here)"
-echo -e "\t- you have an internet connection (see iwctl for wlan)"
-echo -e "\nFor every chapter you will be asked questions on how to setup the os, but the actual action (like formatting) always happen after a summary of your given answers and your confirmation of these answers!"
-
-read -p "Ready to continue (Y/n)? " continue
-case $continue in
-  n|N|no|No|NO)
-    exit 0
-;;
-esac
-
-amount_efivars=$(ls -la /sys/firmware/efi/efivars | wc -l)
-if (($amount_efivars < 4)); then
-  echo "No EFI variables set!"
-  echo "Please boot this usb medium with UEFI. This may be available as a second option in your boot selection menu."
-  exit 0
-fi
-
-
-country=$(curl -4 ifconfig.co/country-iso 2>/dev/null)
-country_codes=$(reflector --list-countries | awk '{if (NR>2) {print $(NF-1)}}')
-
-# querying user for country code
-echo ""
-read -p "Is country code '$country' correct (Y/n)? " answer
-case $answer in
-n|N|no|No|NO)
-  valid=0
-  while (($valid == 0)); do
-    read -p "Enter your country code: " country 
-    case $country in
-      ?)
-      echo -e "\n"$country_codes
-      continue
-      ;;
-    esac
-    valid=$(echo "$country_codes" | grep -i $country | wc -w)
-    if (($valid == 0)); then
-      echo "$country is not a valid code. Sry, try again, you may enter ? to get the available country codes"
-    fi
-  done
-esac
-
-# making pacman faster: querying best mirrorlist and enabling parallel download
-echo -e "\n-- Enabling network time synchronization"
-#Ctimedatectl set-ntp true
-echo -e "-- Setting up mirros for optimal download"
-cp  /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-#Creflector -a 48 -c $country -l 20 --sort rate --save /etc/pacman.d/mirrorlist
-echo "-- Enabling parallel pacman downloads for install"
-#Csed -i 's/^#Para/Para/' /etc/pacman.conf
-
-# make sure /mnt exists and nothing is mounted
-mkdir /mnt &>/dev/null
-umount -R /mnt &>/dev/null
-
 # PARTITION SELECTION
 echo -e ""
 echo "--------------------------------------------------------------"
+echo "-                        CHAPTER 01                          -"
 echo "-   Select/Format partitions (type ? to list partitions)     -"
 echo "--------------------------------------------------------------"
 valid=0
@@ -121,8 +62,8 @@ if [ "$boot_fs" != "vfat" ]; then
   format_boot_partition=1
 fi
 
-# only ask for formatting permissio if we havn't already agreed to formatting, 'cause vfat filesystem necessity
-if (($format_boot_partition != 1)); then
+# only ask for formatting permission if we havn't already agreed to formatting, 'cause vfat filesystem necessity
+if (( $format_boot_partition != 1 )); then
   mount $boot_partition /mnt
   if [ -d "/mnt/EFI/Microsoft" ]; then
     echo "Found Microsoft Windows on boot partition '$boot_partition'"
@@ -140,25 +81,38 @@ if (($format_boot_partition != 1)); then
     to_bool $answer
     format_boot_partition=$(($?))
   fi
+  if (( $format_boot_partition == 1 )); then
+    echo "Partition '${boot_partition}' will be formatted to FAT32"
+  fi
   umount -R /mnt
 fi
 final_boot_fs="vfat"
 
 # sys
+echo ""
 valid=0
-while (($valid == 0)); do
+while (( $valid == 0 )); do
   read -p "System: " sys_partition
   if [ -n "$sys_partition" ]; then
-    check_partition_choice $sys_partition
-    valid=$?
+    # check if this partition was already chosen
+    if [[ $sys_partition == $boot_partition ]]; then
+      echo "Partition '${boot_partition}' already chosen as boot partition!"
+    else
+      check_partition_choice $sys_partition
+      valid=$?
+    fi
   fi
 done
+sys_part_post=$(echo $sys_partition | awk -F"/" '{print $NF}')
+sys_fs=$(lsblk -f | grep $sys_part_post | awk '{print $2}')
+echo "Current filesystem of '${sys_partition}' is ${sys_fs}"
 read -p "Format '$sys_partition' [Y/n]? " answer
 to_bool $answer
 format_sys_partition=$(($?))
 
 
 # home
+echo ""
 use_home_partition=0
 read -p "Do you want to have a seperate home partition [Y/n]? " answer
 to_bool $answer
@@ -169,36 +123,62 @@ if (( $use_home_partition == 1 )) ; then
   while (($valid == 0)); do
     read -p "Home: " home_partition
     if [ -n "$home_partition" ]; then
-      check_partition_choice $home_partition
-      valid=$?
+      if [[ $home_partition == $sys_partition ]]; then
+        echo "Partition '${home_partition}' already chosen as system partition!"
+      elif [[ $home_partition == $boot_partition ]]; then
+        echo "Partition '${home_partition}' already chosen as boot partition!"
+      else
+        check_partition_choice $home_partition
+        valid=$?
+      fi
     fi
   done
+  home_part_post=$(echo $sys_partition | awk -F"/" '{print $NF}')
+  home_fs=$(lsblk -f | grep $sys_part_post | awk '{print $2}')
+  echo "Current filesystem of '${home_partition}' is ${home_fs}"
   read -p "Format '$home_partition' [Y/n]? " answer
   to_bool $answer
   format_home_partition=$(($?))
 fi
 
-# filesystem
-home_part_post=$(echo $home_partition | awk -F"/" '{print $NF}')
-sys_part_post=$(echo $sys_partition | awk -F"/" '{print $NF}')
-home_fs=$(lsblk -f | grep $home_part_post | awk '{print $2}')
-sys_fs=$(lsblk -f | grep $sys_part_post | awk '{print $2}')
+# filesystem choice
 final_home_fs="$home_fs"
 final_sys_fs="$sys_fs"
-# TODO this is always true apparently
-if [ $format_home_partition > 0 ] || [ $format_sys_partition > 0 ]; then
+if (( $format_home_partition > 0 )) || (( $format_sys_partition > 0 )); then
   echo -e "\nChoose filesystem:"
-  echo -e "\t[0] BTRFS"
-  echo -e "\t[1] Keep whatsever on there"
-  read -p "Choose [0]: " answer
-  if [ $answer -eq "0" ]; then
-    if (( $format_home_partition > 0 )); then
-      final_home_fs="btrfs"
+  echo -e "\t[0] EXT4 (default)"
+  echo -e "\t[1] BTRFS (beta state)"
+  echo -e "\t[2] Format with current filesystem"
+  valid=0
+  while (( $valid == 0 )); do
+    valid=1
+    answer=0
+    read -p "Choose: " answer
+    if [ $answer -eq "0" ]; then
+      if (( $format_home_partition > 0 )); then
+        final_home_fs="ext4"
+      fi
+      if (( $format_sys_partition > 0 )); then
+        final_sys_fs="ext4"
+      fi
+    elif [ $answer -eq "1" ]; then
+      if (( $format_home_partition > 0 )); then
+        final_home_fs="btrfs"
+      fi
+      if (( $format_sys_partition > 0 )); then
+        final_sys_fs="btrfs"
+      fi
     fi
-    if (( $format_sys_partition > 0 )); then
-      final_sys_fs="btrfs"
+
+    # if we don't format both partition they might have a different filesystem, this may not be a good state
+    # TODO maybe more verbose message? like: also recognize which partition for format and which not was chosen etc. ?
+    if (( $use_home_partition == 1 )); then
+      if [[ $final_sys_fs != $final_home_fs ]]; then
+        echo "WARNING: The final filesystems of your home (${final_home_fs}) and system (${final_sys_fs}) partition would be different. Please use the same filesystem for your home and system partition. Choose again."
+        valid=0
+      fi
     fi
-  fi
+  done
 fi
 
 
@@ -231,13 +211,13 @@ echo -e "$top_row\n$boot_row\n$sys_row\n$home_row" | column -t -s "|"
 
 valid=0
 echo -e "Choose action:"
-echo -e "    [0] Perform action according to these summary"
+echo -e "    [0] Perform action according to this summary"
 echo -e "    [1] Skip (get to next chapter without doing anything)"
 echo -e "    [2] Back (start this chapter again)"
 while (( $valid == 0 )); do
-  read -p "Continue [y/n]? " answer
+  read -p "Choose? " answer
   case $answer in
-    0)
+    0|1)
       valid=1
       ;;
     *)
@@ -268,7 +248,6 @@ case $answer in
         #Cbtrfs subvolume create @ &>/dev/null
         popd &>/dev/null
         #Cumount /mnt &>/dev/null
-        if 
       elif [ $sys_partition_fs -eq "ext4" ]; then
         echo "-- Formatting '$sys_partition' (ext4)"
         #Cmkfs.ext4 -L ROOT $sys_partition

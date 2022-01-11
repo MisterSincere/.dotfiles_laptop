@@ -39,3 +39,6 @@ xinput set-prop 11 300 -0.8 &
 
 exec i3
 
+#export DESKTOP_SESSION=plasma
+#exec startplasma-x11
+
