@@ -59,7 +59,7 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+w layout toggle tabbed split
 bindsym $mod+Shift+w layout toggle split splitv
 
-bindsym $mod+e exec --no-startup-id nautilus
+bindsym $mod+e exec --no-startup-id dolphin
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -234,7 +234,7 @@ client.urgent		        $red      $red        $white  $red
 # Gaps
 for_window [class=".*"] border pixel 2
 gaps inner 0
-gaps outer 5
+gaps outer 0
 
 # Origin thinks it's special
 for_window [instance="origin.exe"] floating enable

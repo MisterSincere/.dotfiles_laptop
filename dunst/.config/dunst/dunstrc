@@ -30,10 +30,10 @@
     height = 300
 
     # Position the notification in the top right corner
-    origin = bottom-left
+    origin = top-left
 
     # Offset from the origin
-    offset = 0x0
+    offset = 0x26
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -295,6 +295,7 @@
     background = "#111111F0"
     foreground = "#FFFFFFFF"
     frame_color = "#FF9FFF"
+    highlight = "#FF9FFF"
     timeout = 4
     # Icon for notifications with low urgency, uncomment to enable
     #new_icon = /path/to/icon
@@ -400,10 +401,10 @@
 #    summary = "foobar"
 #    skip_display = true
 
-#[history-ignore]
-#    # This notification will not be saved in history
-#    summary = "foobar"
-#    history_ignore = yes
+[history-ignore]
+    # This notification will not be saved in history
+    summary = "change_volume"
+    history_ignore = yes
 
 #[skip-display]
 #    # This notification will not be displayed, but will be included in the history
