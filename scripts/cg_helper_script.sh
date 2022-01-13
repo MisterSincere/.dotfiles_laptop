@@ -1,30 +1,43 @@
 #!/usr/bin/env bash
 
+root_dir="$HOME/programming"
+
+rep_prefix="gogs@git.cg.cs.tu-bs.de:CG1_WS2122/"
+groups=("group_01" "group_02" "group_03" "group_05" "group_06" "group_07" "group_08" "group_09" "group_10" "group_11" "group_12" "group_13" "group_14" "group_15" "group_17")
+hws=("2021-11-09" "2021-11-26" "2021-12-03" "2021-12-10" "2021-12-17" "2022-01-14")
+exercises=("ex1" "ex2" "ex3" "ex4" "ex5" "ex6" "ex7" "ex8" "ex9" "ex10" "ex11" "ex12")
+
 cmd="clone"
 if (( $# > 0 )); then
   cmd=$1
 fi
-rep_prefix="gogs@git.cg.cs.tu-bs.de:CG1_WS2122/"
-groups=("group_01" "group_02" "group_03" "group_05" "group_06" "group_08" "group_09" "group_10" "group_11" "group_12" "group_13" "group_14" "group_15" "group_17")
-hws=("2021-11-09" "2021-11-26" "2021-12-03" "2021-12-10" "2021-12-17" "2022-01-14")
-exercises=("ex1" "ex2" "ex3" "ex4" "ex5" "ex6" "ex7" "ex8" "ex9" "ex10" "ex11" "ex12")
 
-pushd ~/programming &>/dev/null
+pushd ${root_dir} &>/dev/null
 for i in "${groups[@]}"
 do
   if [ $cmd == "clone" ]; then
+    pushd ${root_dir} &>/dev/null
+
     echo "----- Cloning ${i} -----"
     git clone ${rep_prefix}${i}.git
 
+    popd &>/dev/null
+
   elif [ $cmd == "pull" ]; then 
-    pushd ~/programming/${i} &>/dev/null
+    pushd ${root_dir}/${i} &>/dev/null
 
     if (( $# > 1 )); then
       deadline=${hws[$(($2 - 1))]}
       deadline_unix=$(date -d $deadline"T09:45:00" +%s)
       echo "----- ${i} checkout before ${deadline} / ${deadline_unix} -----"
 
-      commits=$(git log master --format='%at,%H')
+      branch_name="master"
+      has_master=$(git branch | grep master | wc -l)
+      if [[ $has_master == 0 ]]; then
+        branch_name="main"
+      fi
+
+      commits=$(git log ${branch_name} --format='%at,%H')
       unset commit_list
       IFS=$'\n' read -d "\034" -r -a commit_list <<<"${commits}\034"
       num_elements=${#commit_list[@]}
@@ -41,27 +54,28 @@ do
     popd &>/dev/null
 
   elif [ $cmd == "datalink" ]; then
-    pushd ~/programming/${i} &>/dev/null
+    pushd ${root_dir}/${i} &>/dev/null
     echo "----- Create data links for ${i} -----"
-    ln -f ~/programming/data/* data/.
+    ln -f ${root_dir}/data/* data/.
     popd &>/dev/null
     
   elif [ $cmd == "resultlink" ]; then
     echo "----- Create result image link for ${i} -----"
-    mkdir -p ~/programming/${i}/build
-    if [[ -f ~/programming/${i}/build/result.png ]]; then
-      ln -f ~/programming/${i}/build/result.png ~/programming/results/${i}.png
+    mkdir -p ${root_dir}/${i}/build
+    mkdir ${root_dir}/results &>/dev/null
+    if [[ -f ${root_dir}/${i}/build/result.png ]]; then
+      ln -f ${root_dir}/${i}/build/result.png ${root_dir}/results/${i}.png
     fi
 
   elif [ $cmd == "checkout" ]; then
     echo "----- Checking out for ${i} -----"
-    pushd ~/programming/${i} &>/dev/null
+    pushd ${root_dir}/${i} &>/dev/null
     git checkout .
     popd &>/dev/null
 
   elif [ $cmd == "datapath" ]; then
     echo "----- Correcting datapath for ${i} -----"
-    pushd ~/programming/${i} &>/dev/null
+    pushd ${root_dir}/${i} &>/dev/null
     for f in "${exercises[@]}"
     do
       if [[ -f ${f}.cpp ]]; then
@@ -72,8 +86,8 @@ do
 
   elif [ $cmd == "build" ]; then
     echo "----- Building ${i} -----"
-    mkdir -p ~/programming/${i}/build &>/dev/null
-    pushd ~/programming/${i}/build &>/dev/null
+    mkdir -p ${root_dir}/${i}/build &>/dev/null
+    pushd ${root_dir}/${i}/build &>/dev/null
     echo "- Running CMake to generate Ninja"
     cmake .. -G "Ninja" &>/dev/null
     target="tracey_ex1"
@@ -91,14 +105,14 @@ do
 
     echo "----- Running ${target} of ${i} -----"
     
-    pushd ~/programming/${i}/build &>/dev/null
+    pushd ${root_dir}/${i}/build &>/dev/null
     ./${target}
     popd &>/dev/null
 
 
   elif [ $cmd == "tmp" ]; then
     echo "----- Tmp action for ${i} -----"
-    rm -rf ~/programming/${i}/cmake-build-debug
+    rm -rf ${root_dir}/${i}/cmake-build-debug
 
   else
     echo "----- ${i} no clue -----"

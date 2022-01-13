@@ -5,9 +5,9 @@ CHECK_ICON=""
 
 dunstify -r 42 -i pacman_nom "Updating databases..."
 
-sudo pacman -Syy
-amount_updates=$( pacman -Qu | wc -l )
-amount_ignored_updates=$( pacman -Qu | grep -i "\[ignored\]" | wc -l )
+sudo yay -Syy
+amount_updates=$( yay -Qu | wc -l )
+amount_ignored_updates=$( yay -Qu | grep -i "\[ignored\]" | wc -l )
 
 if (( amount_updates == 0 )); then
   dunstify -r 42 -i pacman "No new updates"

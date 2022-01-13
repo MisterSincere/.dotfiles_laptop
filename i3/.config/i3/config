@@ -26,7 +26,7 @@ exec --no-startup-id nm-applet
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+q kill
@@ -161,6 +161,8 @@ bindsym $mod+a exec ~/.config/rofi/scripts/start_sel_audio_out.sh
 # most used screenshot for me
 bindsym $mod+s exec maim -s -u | xclip -selection clipboard -t image/png -i
 bindsym $mod+Shift+s exec exec ~/.config/rofi/scripts/start_screen_cap.sh
+
+bindsym $mod+x exec colorpicker --one-shot --preview --short | xclip -selection clipboard
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
