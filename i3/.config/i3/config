@@ -154,17 +154,6 @@ bindsym $mod+a exec ~/.config/rofi/scripts/start_sel_audio_out.sh
 bindsym $mod+s exec maim -s -u | xclip -selection clipboard -t image/png -i
 bindsym $mod+Shift+s exec exec ~/.config/rofi/scripts/start_screen_cap.sh
 
-# screenshot
-#mode "screenshot" {
-#  bindsym d exec ~/.config/rofi/scripts/start_screen_cap_file.sh, mode "default"
-#  bindsym c exec ~/.config/rofi/scripts/start_screen_cap_clipboard.sh, mode "default"
-#  
-#  bindsym Return mode "default"
-#  bindsym Escape mode "default"
-#  bindsym $mod+r mode "default"
-#}
-#bindsym $mod+Shift+s mode "screenshot"
-
 # resize window (you can also use the mouse for that)
 mode "resize" {
   # These bindings trigger as soon as you enter the resize mode

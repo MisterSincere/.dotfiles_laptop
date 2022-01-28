@@ -1,0 +1,137 @@
+group_01:
+  - ambient: correct
+  - spotlight: 
+    - correct alpha
+    - out of cone check
+    - occlusion check
+    - correct attenuation
+    - correct linear falloff
+  - obj:
+    - reading v, vn, vt
+    - storing indices necessary indices per face
+    - crash because no check if textures really exist
+    - and also texture coordinates are set nowhere
+
+group_02:
+  - ambient: correct
+  - spotlight: 
+    - correct alpha
+    - out of cone check
+    - occlusion check
+    - correct attenuation
+    - correct linear falloff
+
+group_03:
+  - ambient: correct
+  - spotlight: 
+    - correct alpha
+    - out of cone check
+    - occlusion check
+    - correct attenuation
+    - correct linear falloff
+
+group_04: nothing submitted
+
+group_05:
+  - ambient: correct
+  - spotlight: 
+    - correct alpha
+    - out of cone check
+    - occlusion check (within pointlight:illuminate call)
+    - correct attenuation (also within pointlight::illuminate call)
+    - correct linear falloff
+
+group_06:
+  - ambient: correct (what is the 'lightRay' def for? it's unused)
+  - spotlight: 
+    - alpha computed using ray's direction twice
+    - out of cone check done via arbitrary set alphaMin and alphaMax
+    - no occlusion check
+    - no attenuation
+    - linear falloff wrong alpha is in radians
+
+group_07:
+  - ambient: correct
+  - spotlight: 
+    - correct alpha
+    - out of cone check
+    - occlusion check (optimization: done even when alpha would have been oor anyways)
+    - correct attenuation
+    - correct linear falloff
+
+group_08:
+  - ambient: correct
+  - spotlight: 
+    - correct alpha (why compute it multiple times?)
+    - out of cone check
+    - occlusion check (optimization: done even when alpha would have been oor anyways)
+    - correct attenuation
+    - correct linear falloff
+
+
+group_09:
+  - ambient: correct
+  - spotlight: 
+    - correct alpha
+    - out of cone check
+    - occlusion check (done everytime)
+    - correct attenuation
+    - correct linear falloff
+
+group_10:
+  - ambient: correct
+  - spotlight: 
+    - correct alpha
+    - out of cone check
+    - occlusion check (done everytime)
+    - correct attenuation
+    - correct linear falloff
+
+group_11:
+  - ambient: 2.5p (illum.direction not set)
+  - spotlight: 
+    - correct alpha
+    - out of cone check
+    - occlusion check (done everytime)
+    - correct attenuation
+    - correct linear falloff
+
+group_12:
+  - ambient: 4p (falloff is nonsense)
+  - spotlight: 
+    - correct alpha
+    - out of cone check
+    - occlusion check (done everytime)
+    - correct attenuation
+    - correct linear falloff
+
+group_13:
+  - ambient: correct
+  - spotlight: 
+    - correct alpha
+    - out of cone check
+    - occlusion check (done everytime)
+    - correct attenuation
+    - correct linear falloff
+
+group_14:
+  - ambient: correct (what is with the unused 'lightRay' def?!) 
+  - spotlight: 
+    - correct alpha
+    - out of cone check wrong
+    - occlusion check (done everytime)
+    - correct attenuation
+    - linear falloff has wrong factor
+
+
+group_15:
+  - ambient: correct
+  - spotlight: 
+    - correct alpha
+    - out of cone check
+    - occlusion check (done everytime)
+    - correct attenuation
+    - correct linear falloff
+
+group_16: nothing submitted
+group_17: nothing submitted
