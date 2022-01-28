@@ -238,6 +238,8 @@ for_window [class=".*"] border pixel 2
 gaps inner 0
 gaps outer 0
 
+mouse_warping none
+
 # Origin thinks it's special
 for_window [instance="origin.exe"] floating enable
 for_window [instance="Raft"] floating enable
@@ -253,5 +255,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # dunst
 exec_always --no-startup-id /usr/bin/dunst
+
+exec_always --no-startup-id eww daemon
 
 exec_always --no-startup-id $HOME/.config/polybar/scripts/checkupdates.sh

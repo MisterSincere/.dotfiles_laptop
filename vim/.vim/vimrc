@@ -3,10 +3,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 "Plug 'jremmen/vim-ripgrep'
 Plug 'tpope/vim-fugitive'
+Plug 'elkowar/yuck.vim'
 Plug 'vim-utils/vim-man'
 Plug 'dag/vim-fish'
 Plug 'lyuts/vim-rtags'
+Plug 'zivyangll/git-blame.vim'
 "Plug 'ycm-core/YouCompleteMe'
+"Plug 'xavierd/clang_complete'
 Plug 'mbbill/undotree'
 call plug#end()
 
@@ -29,6 +32,7 @@ let mapleader = " "
 
 let g:ycm_enable_diagnostic_highlighting = 0
 let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
 " coloring
 syntax on 
@@ -86,11 +90,19 @@ nnoremap <leader>ps :Rg<SPACE>
 nnoremap <silent> <leader>+ :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
 
-"nnoremap <silent> <leader>gd :YcmCompleter GoTo<CR>
+nnoremap <silent> <leader>gd :YcmCompleter GoTo<CR>
 "nnoremap <silent> <leader>gf :YcmCompleter FixIt<CR>
+"nnoremap <silent> <leader>gt :ALEGoToDefinition<CR>
+
+nnoremap <leader>b :<C-u>call gitblame#echo()<CR>
 
 imap jj <esc>
 
+autocmd FileType python map <buffer> <F9> :w<CR>:exec  '!python' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python' shellescape(@%, 1)<CR>
+
+autocmd FileType cpp map <buffer> <F9> :w<CR>:exec '! cd build; ninja tracey_ex3_2; cd -'<CR>
+autocmd FileType cpp map <buffer> <F10> :w<CR>:exec '! cd build; ./tracey_ex3_2; cd -'<CR>
 
 " jump to last position after reopening
 if has("autocmd")

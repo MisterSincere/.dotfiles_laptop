@@ -3,7 +3,7 @@
 root_dir="$HOME/programming"
 
 rep_prefix="gogs@git.cg.cs.tu-bs.de:CG1_WS2122/"
-groups=("group_01" "group_02" "group_03" "group_05" "group_06" "group_07" "group_08" "group_09" "group_10" "group_11" "group_12" "group_13" "group_14" "group_15" "group_17")
+groups=("group_01" "group_02" "group_03" "group_05" "group_06" "group_07" "group_08" "group_09" "group_10" "group_11" "group_12" "group_13" "group_14" "group_15")
 hws=("2021-11-09" "2021-11-26" "2021-12-03" "2021-12-10" "2021-12-17" "2022-01-14")
 exercises=("ex1" "ex2" "ex3" "ex4" "ex5" "ex6" "ex7" "ex8" "ex9" "ex10" "ex11" "ex12")
 
@@ -11,6 +11,18 @@ cmd="clone"
 if (( $# > 0 )); then
   cmd=$1
 fi
+
+unset args
+IFS=$' ' read -d "\034" -r -a args <<<"$@\034"
+for (( i=1; i<$#; i++ ))
+do
+  var=${args[$i]}
+  if [ $var == "-x" ];
+  then
+    par=${args[$(($i + 1))]}
+    groups=( "${groups[@]/$par}" )
+  fi
+done
 
 pushd ${root_dir} &>/dev/null
 for i in "${groups[@]}"
