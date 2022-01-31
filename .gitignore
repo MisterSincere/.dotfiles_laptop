@@ -1,2 +1,6 @@
+~/
 vim/.vim/.netrwhist
 vim/.vim/plugged/
+vim/.vim/undodir/
+
+nvim/.config/nvim/plugged/
