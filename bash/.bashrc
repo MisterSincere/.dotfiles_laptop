@@ -28,3 +28,8 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 
 alias cg="bash ~/.dotfiles/scripts/cg_helper_script.sh"
+
+if [[ $(ps --no-header --pid=$PPID --format=cmd) != "fish" && -z ${BASH_EXECUTION_STRING} ]]
+then
+  exec fish
+fi
