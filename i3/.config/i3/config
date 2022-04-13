@@ -34,6 +34,9 @@ bindsym $mod+q kill
 # start rofi (a program launcher)
 bindsym $mod+d exec $HOME/.config/rofi/scripts/start_launcher.sh
 
+# timer dialog
+bindsym $mod+t exec $HOME/.config/rofi/scripts/rw_timer.sh
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -59,7 +62,7 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+w layout toggle tabbed split
 bindsym $mod+Shift+w layout toggle split splitv
 
-bindsym $mod+e exec --no-startup-id dolphin
+bindsym $mod+e exec --no-startup-id alacritty -e ranger 
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -162,7 +165,7 @@ bindsym $mod+a exec ~/.config/rofi/scripts/start_sel_audio_out.sh
 bindsym $mod+s exec maim -s -u | xclip -selection clipboard -t image/png -i
 bindsym $mod+Shift+s exec exec ~/.config/rofi/scripts/start_screen_cap.sh
 
-bindsym $mod+x exec colorpicker --one-shot --preview --short | xclip -selection clipboard
+#bindsym $mod+x exec colorpicker --one-shot --preview --short | xclip -selection clipboard
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -196,6 +199,7 @@ mode "launch" {
   bindsym d exec discord, mode "default"
   bindsym w exec whatsapp-nativefier, mode "default"
   bindsym c exec clion, mode "default"
+  bindsym u exec chromium, mode "default"
   bindsym Return mode "default"
   bindsym Escape mode "default"
   bindsym $mod+m mode "default"

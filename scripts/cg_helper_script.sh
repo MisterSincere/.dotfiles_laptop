@@ -62,6 +62,18 @@ do
           break
         fi
       done
+
+    else
+      echo "----- ${i} checkout before ${deadline} / ${deadline_unix} -----"
+
+      branch_name="master"
+      has_master=$(git branch | grep master | wc -l)
+      if [[ $has_master == 0 ]]; then
+        branch_name="main"
+      fi
+      git checkout ${branch_name} 
+      git pull
+
     fi
     popd &>/dev/null
 

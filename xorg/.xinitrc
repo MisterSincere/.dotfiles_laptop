@@ -33,12 +33,13 @@ fi
 
 # X Key Bindings 
 xbindkeys &
-setxkbmap de &
+setxkbmap us &
 picom --config ~/.config/picom/picom.conf &
 xinput set-prop 11 300 -0.8 &
 
 export QT_SELECT=5
 export QT_QPA_PLATFORMTHEME=qt5ct
+export EDITOR=nvim
 exec i3
 
 #export DESKTOP_SESSION=plasma
