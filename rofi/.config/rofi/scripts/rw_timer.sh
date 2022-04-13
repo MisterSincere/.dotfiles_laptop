@@ -23,10 +23,6 @@ cat > $dir/colors.rasi <<- EOF
 	}
 EOF
 
-index_of_after () {
-  return awk '{s=substr($2, $1);posn=index(s,$3);if (posn>0) print $1+posn-1; else print 0;}'
-}
-
 # parse timer state file
 params=("" "" "" "" "")
 amount_lines=0

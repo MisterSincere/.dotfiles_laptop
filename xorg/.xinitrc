@@ -40,6 +40,7 @@ xinput set-prop 11 300 -0.8 &
 export QT_SELECT=5
 export QT_QPA_PLATFORMTHEME=qt5ct
 export EDITOR=nvim
+export ALARM_SOUND=$HOME/Documents/alarm.mp3
 exec i3
 
 #export DESKTOP_SESSION=plasma

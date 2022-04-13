@@ -3,7 +3,7 @@
 tmp_file="$HOME/.config/rofi/scripts/timer_tmp"
 
 # parse timer state file
-params=("" "" "")
+params=("" "" "" "" "")
 amount_lines=0
 if [ ! -f "$tmp_file" ]; then
   touch $tmp_file
@@ -23,14 +23,12 @@ if (( $amount_lines >= 3 )); then
   seconds_left=$((${params[1]} - $time_passed))
 
   if (( $seconds_left <= 0 )); then
-    echo "ALAARM!"
-    echo $ALARM_SOUND
-    if [ -n "$ALARM_SOUND" ]; then
+    echo "ALAAARM!"
+    if [ ! -n "$ALARM_SOUND" ]; then
       ALARM_SOUND="/usr/share/sounds/freedesktop/stereo/dialog-error.oga"
     fi
     if [[ ! $ALARM_SOUND == "NONE" ]] && [ -f "$ALARM_SOUND" ]; then
       mpv $ALARM_SOUND &>/dev/null
-      #mpv "$HOME/.config/rofi/resources/alarm.mp3" &>/dev/null
     fi
   else
     echo " $(date -d@${seconds_left} -u +%H:%M:%S)"
