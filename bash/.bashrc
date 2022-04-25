@@ -27,7 +27,8 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
-alias cg="bash ~/.dotfiles/scripts/cg_helper_script.sh"
+alias cg="bash ~/.config/scripts/cg_helper_script.sh"
+alias mtpull="bash ~/.config/scripts/mtstudio_pull.sh"
 
 if [[ $(ps --no-header --pid=$PPID --format=cmd) != "fish" && -z ${BASH_EXECUTION_STRING} ]]
 then
