@@ -5,19 +5,17 @@ CHECK_ICON=""
 
 dunstify -r 42 -i pacman_nom "Updating databases..."
 
-amount_updates_old=$( pacman -Qu | wc -l )
-sudo pacman -Syy
-amount_updates_now=$( pacman -Qu | wc -l )
-amount_ignored_updates=$( pacman -Qu | grep -i "\[ignored\]" | wc -l )
+sudo yay -Syy
+query_updates=$( yay -Qu )
+amount_updates=$( echo ${query_updates} | wc -l )
+amount_ignored_updates=$( ${query_updates} | grep -i "\[ignored\]" | wc -l )
 
-if (( amount_updates_now == 0 )); then
+if (( amount_updates == 0 )); then
   dunstify -r 42 -i pacman "No new updates"
 else
-  text="${amount_updates_now} updates ($(($amount_updates_now - $amount_updates_old)) new"
+  text="Found $amount_updates updates"
   if (( amount_ignored_updates > 0 ));  then
-    text="$text, ignoring $amount_ignored_updates)"
-  else
-    text="$text)"
+    text="$text (ignoring $amount_ignored_updates)"
   fi
   dunstify -r 42 -i pacman "$text"
 fi
