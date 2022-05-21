@@ -59,7 +59,10 @@ local setup = function()
   nmap('<leader>b', ':<C-u>call gitblame#echo()<CR>')
   
   -- telescope / reloading
-  nmap('<F5>', '<cmd>:lua require("utils.reload").reload()<CR>', {silent=true})
+  nmap('<F1>', '<cmd>:lua require("utils.reload").reload()<CR>', {silent=true,noremap=false})
+
+  -- telescope / project view
+  nmap('<leader>v', '<cmd>:lua require("utils.project_view").view()<CR>', {silent=true})
   
   -- cokeline
   nmap('<Tab>',     '<Plug>(cokeline-focus-next)', {silent = true, noremap = false})
@@ -70,6 +73,23 @@ local setup = function()
   nmap('<F12>', ':GotoHeader<CR>')
   imap('<F12>', '<ESC>:GotoHeader<CR>')
   nmap('<leader>gh', ':GotoHeaderSwitch<CR>')
+
+  -- cmake building
+  nmap('<C-t>', ':CMake select_target<CR>')
+  nmap('<C-d>', ':CMake select_build_type<CR>')
+  nmap('<C-c>', ':CMake configure<CR>')
+  nmap('<C-b>', ':CMake build<CR>')
+  nmap('<leader><F5>', ':CMake build_and_debug<CR>')
+  nmap('<F5>', ':CMake run')
+
+  -- dap
+  nmap('<F9>', ':lua require\'dap\'.toggle_breakpoint()<CR>')
+  nmap('<leader><F9>', ':lua require\'dap\'.set_breakpoint(vim.fn.input(\'Breakpoint condition: \'))<CR>')
+  nmap('<F6>', ':lua require\'dap\'.step_into()<CR>')
+  nmap('<F7>', ':lua require\'dap\'.step_over()<CR>')
+  nmap('<F8>', ':lua require\'dap\'.continue()<CR>')
+
+
 end
 
 return {

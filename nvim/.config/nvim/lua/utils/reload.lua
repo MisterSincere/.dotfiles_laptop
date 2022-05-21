@@ -11,7 +11,8 @@ local RELOAD = require("plenary.reload").reload_module
 
 local R = function(name)
   RELOAD(name)
-  return require(name).setup()
+  local setup = require(name).setup
+  if setup~=nil then setup() end
 end
 
 
@@ -24,8 +25,8 @@ function M.reload()
     local module_name;
 
     module_name = s:gsub("%.lua", "")
+    module_name = module_name:gsub(".*%/lua/", "")
     module_name = module_name:gsub("%/", ".")
-    module_name = module_name:gsub("%.init", "")
 
     return module_name
   end

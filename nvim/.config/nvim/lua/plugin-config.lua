@@ -17,6 +17,85 @@ vim.g.ycm_global_ycm_extra_conf = '~/.config/nvim/.ycm_extra_conf.py'
 -- gotoheader
 vim.g.goto_header_associate_cpp_h = 1
 
+-- telescope
+local telescope_actions = require('telescope.actions')
+local telescope = require('telescope')
+telescope.setup({
+  defaults = {
+    mappings = {
+      i = {
+        ["<F1>"] = telescope_actions.close,
+        ["<ESC>"] = telescope_actions.close,
+      }
+    }
+  }
+})
+telescope.load_extension('ui-select')
+
+-- dap debugger
+local dap = require('dap')
+dap.set_log_level('DEBUG')
+dap.adapters.cppdbg = {
+  id = 'cppdbg',
+  type = 'executable',
+  command = '/home/kaffeekind/.config/nvim-extension/vscode-cpptools/extension/debugAdapters/bin/OpenDebugAD7',
+}
+dap.adapters.lldb = {
+  id = 'lldb',
+  type = 'executable',
+  command = '/usr/bin/lldb-vscode',
+  name = 'lldb',
+}
+dap.configurations.cpp = {
+  {
+    name = "Launch",
+    type = "lldb",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+    args = {},
+    runInTerminal = false,
+  },
+}
+vim.fn.sign_define('DapBreakpoint', {text=' B', texthl='', linehl='', numhl=''})
+dap.configurations.c = dap.configurations.cpp
+
+-- dap virtual text extension
+local dap_virt_text = require('nvim-dap-virtual-text')
+dap_virt_text.setup({
+  enabled = true,
+  enabled_commands = true,
+  highlight_changed_variables = true,
+  highligh_new_as_changed = false,
+  show_stop_reasons = true,
+  commented = false,
+  only_first_definition = true,
+  all_references = false,
+  filter_references_pattern = '<module',
+  -- there are experimental features
+})
+
+-- neovim-cmake
+local Path = require('plenary.path')
+vim.g.cmake_build_dir = 'build'
+local cmake = require('cmake')
+cmake.setup({
+  cmake_executable = 'cmake',
+  parameters_file = 'neovim.json',
+  build_dir = tostring(Path:new('{cwd}', 'build/{os}-{build_type}')),
+  default_projects_path = tostring(Path:new(vim.loop.os_homedir(), 'programming')),
+  configure_args = {'-D', 'CMAKE_EXPORT_COMPILE_COMMANDS=1'},
+  build_args = {},
+  on_build_output = nil,
+  quickfix_height = 10,
+  quickfix_only_on_error = false,
+  dap_configuration = {type = 'lldb', request = 'launch'},
+  dap_open_command = dap.repl.open,
+})
+
 -- cokeline a bufferline
 local get_hex = require('cokeline/utils').get_hex
 local mappings = require('cokeline/mappings')
@@ -147,8 +226,8 @@ require('cokeline').setup({
   show_if_buffers_are_at_least = 2,
 
   buffers = {
-    -- filter_valid = function(buffer) return buffer.type ~= 'terminal' end,
     -- filter_visible = function(buffer) return buffer.type ~= 'terminal' end,
+    filter_valid = function(buffer) return buffer.filename ~= 'quickfix' and buffer.filename ~= '[dap-repl]' end,
     new_buffers_position = 'next',
   },
 

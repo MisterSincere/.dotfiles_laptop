@@ -5,6 +5,7 @@ local setup = function()
   vim.cmd('colorscheme gruvbox')
   vim.cmd('syntax on')
   vim.cmd('hi! Normal guibg=NONE gui=NONE ctermbg=NONE cterm=NONE')
+  vim.cmd('hi! SignColumn guibg=NONE gui=NONE ctermbg=NONE cterm=NONE')
 end
 
 return {

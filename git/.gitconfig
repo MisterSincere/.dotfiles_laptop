@@ -8,3 +8,5 @@
 	editor = vim
 [advice]
   detachedHead = false
+[save]
+	directory = /opt/yavide/core/external/clang_complete

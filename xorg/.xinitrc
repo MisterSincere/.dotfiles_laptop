@@ -41,6 +41,7 @@ export QT_SELECT=5
 export QT_QPA_PLATFORMTHEME=qt5ct
 export EDITOR=nvim
 export ALARM_SOUND=$HOME/Documents/alarm.mp3
+export CMAKE_GENERATOR=Ninja
 exec i3
 
 #export DESKTOP_SESSION=plasma
