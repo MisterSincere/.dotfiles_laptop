@@ -2,7 +2,7 @@
 
 if [ $# -eq 0 ]; then
 
-  options=$(pamixer --list-sinks | awk -F " \"" '{ if (NR!=1) { print substr($3, 1, length($3)-1) } }' | grep -iv hdmi)
+  options=$(pamixer --list-sinks | awk -F " \"" '{ if (NR!=1) { print substr($4, 1, length($4)-1) } }' | grep -iv hdmi)
 
   echo "$options"
 

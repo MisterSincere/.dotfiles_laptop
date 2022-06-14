@@ -194,6 +194,7 @@ mode "launch" {
   bindsym t exec thunderbird, mode "default"
   bindsym Shift+t exec telegram-desktop, mode "default"
   bindsym s exec spotify, mode "default"
+  #bindsym s exec --no-startup-id alacritty -e spt, mode "default"
   bindsym Shift+s exec steam, mode "default"
   bindsym Ctrl+s exec slack, mode "default"
   bindsym d exec discord, mode "default"
