@@ -22,4 +22,4 @@ cat > $dir/colors.rasi <<- EOF
 	}
 EOF
 
-rofi -no-lazy-grab -show drun -modi drun -theme $dir/"launcher"
+rofi -no-lazy-grab -show drun -modi drun -theme $dir/"launcher" -sorting-method fzf -sort
