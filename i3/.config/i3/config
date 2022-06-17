@@ -66,7 +66,8 @@ bindsym $mod+Shift+w layout toggle split splitv
 bindsym $mod+e exec --no-startup-id alacritty -e ranger 
 
 # trying to using tmux
-bindsym $mod+z exec --no-startup-id alacritty -e tmux
+set $open_tmux $HOME/.config/i3/scripts/tmux_open.sh
+bindsym $mod+z exec --no-startup-id alacritty -e $open_tmux
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
