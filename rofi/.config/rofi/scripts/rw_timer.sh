@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 dir="$HOME/.config/rofi/"
-tmp_file="$dir/scripts/timer_tmp"
+tmp_file="/tmp/timer"
 
 # dark
 ALPHA="#00000000"

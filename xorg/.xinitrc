@@ -35,7 +35,7 @@ fi
 xbindkeys &
 setxkbmap us &
 picom --config ~/.config/picom/picom.conf &
-xinput set-prop 11 300 -0.8 &
+xinput set-prop 11 292 -0.7 &
 
 export QT_SELECT=5
 export QT_QPA_PLATFORMTHEME=qt5ct

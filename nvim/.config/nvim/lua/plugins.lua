@@ -5,6 +5,7 @@ local setup  = function()
 
   Plug 'dunstontc/vim-vscode-theme'
   Plug 'morhetz/gruvbox'
+  Plug 'khaveesh/vim-fish-syntax'
 
   Plug 'tpope/vim-fugitive'
   Plug 'vim-utils/vim-man'

@@ -1,6 +1,6 @@
 #!/bin/env bash
 
-tmp_file="$HOME/.config/rofi/scripts/timer_tmp"
+tmp_file="/tmp/timer"
 
 # parse timer state file
 params=("" "" "" "" "")

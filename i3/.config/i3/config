@@ -168,7 +168,7 @@ bindsym $mod+a exec ~/.config/rofi/scripts/start_sel_audio_out.sh
 
 # most used screenshot for me
 bindsym $mod+s exec maim -s -u | xclip -selection clipboard -t image/png -i
-bindsym $mod+Shift+s exec exec ~/.config/rofi/scripts/start_screen_cap.sh
+bindsym $mod+Shift+s exec ~/.config/rofi/scripts/start_screen_cap.sh
 
 #bindsym $mod+x exec colorpicker --one-shot --preview --short | xclip -selection clipboard
 
@@ -211,6 +211,15 @@ mode "launch" {
   bindsym $mod+m mode "default"
 }
 bindsym $mod+m mode "launch"
+
+mode "i3" {
+  bindsym s exec $HOME/.config/i3/scripts/save_tree.sh, mode "default"
+  bindsym l exec $HOME/.config/i3/scripts/load_tree.sh, mode "default"
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+m mode "default"
+}
+bindsym $mod+i mode "i3"
 
 set $locker ~/.config/i3/scripts/lock.sh
 mode "system" {
