@@ -11,7 +11,7 @@ local setup  = function()
   Plug 'vim-utils/vim-man'
   Plug 'lyuts/vim-rtags'
   Plug 'zivyangll/git-blame.vim'
-  Plug 'mbbill/undotree'
+  --Plug 'mbbill/undotree'
   
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'noib3/nvim-cokeline'

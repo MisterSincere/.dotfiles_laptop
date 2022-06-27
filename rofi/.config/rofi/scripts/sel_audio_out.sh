@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 if [ $# -eq 0 ]; then
 
@@ -9,7 +9,7 @@ if [ $# -eq 0 ]; then
 else
 
   selected_sink=$(pamixer --list-sinks | grep "$@" | awk '{ print $1 }')
-  coproc ( pactl set-default-sink $selected_sink > /dev/null 2>1 )
+  coproc ( pactl set-default-sink $selected_sink > /dev/null )
   exit 0
 
 fi

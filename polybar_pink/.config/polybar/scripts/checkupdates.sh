@@ -5,10 +5,10 @@ CHECK_ICON=""
 
 dunstify -r 42 -i pacman_nom "Updating databases..."
 
-kdesu pacman -Syy
+yay -Syy > /dev/null
 query_updates=$( yay -Qu )
 amount_updates=$( echo ${query_updates} | wc -l )
-amount_ignored_updates=$( ${query_updates} | grep -i "\[ignored\]" | wc -l )
+amount_ignored_updates=$( echo ${query_updates} | grep -i "\[ignored\]" | wc -l )
 
 if (( amount_updates == 0 )); then
   dunstify -r 42 -i pacman "No new updates"

@@ -34,7 +34,7 @@ local setup = function()
   vim.opt.undofile = true
   
   -- file containing undo history if undofile is true
-  vim.opt.undodir = '~/.config/nvim/undodir'
+  vim.opt.undodir = '/tmp/nvim/undodir'
   
   -- enable 24-bit rgb colors
   vim.opt.termguicolors = true
