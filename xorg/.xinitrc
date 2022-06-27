@@ -43,7 +43,3 @@ export EDITOR=nvim
 export ALARM_SOUND=$HOME/Documents/alarm.mp3
 export CMAKE_GENERATOR=Ninja
 exec i3
-
-#export DESKTOP_SESSION=plasma
-#exec startplasma-x11
-

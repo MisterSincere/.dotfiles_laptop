@@ -1,4 +1,16 @@
-# i3 config
+# .xinitrc
+i3 / i3-gaps
+picom
+xbindkeys
+xorg-setxkbmap
+xorg-xinput
+nvim
+
+# .xbindkeysrc
+playerctl
+pactl
+
+# i3/config
 alacritty
 tmux
 nm-applet
@@ -9,6 +21,9 @@ polybar
 dunst
 i3lock-color
 perl-anyevent-i3      # save tree functionality
+
+# pipewire.conf
+noise-suppression-for-voice
 
 # i3 launch group
 firefox
@@ -22,21 +37,30 @@ clion
 # polybar
 ttf-ubuntu-font-family
 iosevka font (package or maybe it needs the file from this repo)
+icomoon feather (also probably file but debug this please)
 
-# checkupdates.sh
-yay
-dunst
+# .gitconfig
+nvim
 
 # polybar/timer.sh
 mpv
 
-# screen_cap.sh
+# rofi/checkupdates.sh
+yay
+dunst
+
+# rofi/screen_cap.sh
 maim
 xclip
 xdotool
 
-# sel_audio_out.sh
+# rofi/sel_audio_out.sh
 pamixer
 awk
 pactl
+
+# i3/change_volume.sh
+pamixer
+mpv
+dunst
 

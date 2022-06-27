@@ -5,7 +5,7 @@
 	name = Nikkel Heesen
 	email = n.heesen@tu-bs.de
 [core]
-	editor = vim
+	editor = nvim
 [advice]
   detachedHead = false
 [save]
