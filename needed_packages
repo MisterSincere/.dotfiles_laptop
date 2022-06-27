@@ -1,0 +1,42 @@
+# i3 config
+alacritty
+tmux
+nm-applet
+ranger
+maim
+feh
+polybar
+dunst
+i3lock-color
+perl-anyevent-i3      # save tree functionality
+
+# i3 launch group
+firefox
+thunderbird
+spotify
+steam
+slack
+discord
+clion
+
+# polybar
+ttf-ubuntu-font-family
+iosevka font (package or maybe it needs the file from this repo)
+
+# checkupdates.sh
+yay
+dunst
+
+# polybar/timer.sh
+mpv
+
+# screen_cap.sh
+maim
+xclip
+xdotool
+
+# sel_audio_out.sh
+pamixer
+awk
+pactl
+
