@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 root_dir="$HOME/programming"
 
