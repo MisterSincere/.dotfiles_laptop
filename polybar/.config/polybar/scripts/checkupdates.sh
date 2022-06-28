@@ -1,20 +1,17 @@
 #!/bin/bash
 
-BAR_ICON=""
-CHECK_ICON=""
-
 dunstify -r 42 -i pacman_nom "Updating databases..."
 
 yay -Syy > /dev/null
-query_updates=$( yay -Qu )
-amount_updates=$( echo ${query_updates} | wc -l )
-amount_ignored_updates=$( echo ${query_updates} | grep -i "\[ignored\]" | wc -l )
+n_all_updates=$( yay -Qu | grep -iv "\[ignored\]" | wc -l)
+n_off_updates=$( pacman -Qu | grep -iv "\[ignored\]" | wc -l)
+n_aur_updates=$(( ${n_all_updates} - ${n_off_updates} ))
 
-if (( amount_updates == 0 )); then
+if (( ${n_all_updates} == 0 )); then
   dunstify -r 42 -i pacman "No new updates"
 else
-  text="Found $amount_updates updates"
-  if (( amount_ignored_updates > 0 ));  then
+  text="Found $n_off_updates official and $n_aur_updates AUR updates"
+  if (( ${amount_ignored_updates} > 0 ));  then
     text="$text (ignoring $amount_ignored_updates)"
   fi
   dunstify -r 42 -i pacman "$text"

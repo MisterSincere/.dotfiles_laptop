@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 
-BAR_ICON=""
+PACKAGE_ICON=""
+AUR_ICON=" "
 CHECK_ICON=""
-amount_updates=$( pacman -Qu | grep -v "\[ignored\]" | wc -l )
 
-if (( amount_updates == 0)); then
+n_all_updates=$( yay -Qu | grep -iv "\[ignored\]" | wc -l)
+n_off_updates=$( pacman -Qu | grep -iv "\[ignored\]" | wc -l)
+n_aur_updates=$(( ${n_all_updates} - ${n_off_updates} ))
+
+if (( ${n_all_updates}== 0)); then
   echo $CHECK_ICON
 else
-  echo $BAR_ICON$amount_updates
+  printf '%s %s/%s' ${PACKAGE_ICON} ${n_all_updates} ${n_aur_updates}
 fi
