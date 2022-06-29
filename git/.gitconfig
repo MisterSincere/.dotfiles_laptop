@@ -10,3 +10,8 @@
   detachedHead = false
 [save]
 	directory = /opt/yavide/core/external/clang_complete
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

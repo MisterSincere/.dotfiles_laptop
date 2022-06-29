@@ -7,3 +7,4 @@ vim/.vim/plugin/
 vim/.vim/.VimballRecord
 
 nvim/.config/nvim/plugged/
+*.jpg
