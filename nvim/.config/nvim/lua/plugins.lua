@@ -4,8 +4,6 @@ local setup  = function()
   	vim.call('plug#begin', '~/.config/nvim/plugged')
 
 	-- theming
-  	Plug 'morhetz/gruvbox'
-	Plug 'dunstontc/vim-vscode-theme'
   	Plug 'khaveesh/vim-fish-syntax'
   	Plug 'tikhomirov/vim-glsl'
 
