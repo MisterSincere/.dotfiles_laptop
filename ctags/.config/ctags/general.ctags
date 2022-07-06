@@ -2,3 +2,6 @@
 --exclude=lib/*
 --exclude=cmake-build-*/*
 --exclude=build-*/*
+--exclude=compile_commands.json
+--exclude=neovim.json
+--exclude=.idea/*
