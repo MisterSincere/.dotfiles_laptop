@@ -1,0 +1,4 @@
+--recurse=yes
+--exclude=lib/*
+--exclude=cmake-build-*/*
+--exclude=build-*/*

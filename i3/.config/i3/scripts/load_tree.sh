@@ -4,8 +4,8 @@
 i3-msg "workspace 1:  ; append_layout /home/kaffeekind/.config/i3/layout/wp1.json"
 alacritty -e $HOME/.config/i3/scripts/tmux_open.sh &
 
-# wp2 firefox
-i3-msg "workspace 2:  ; append_layout /home/kaffeekind/.config/i3/layout/wp2.json"
+# wp3 firefox
+i3-msg "workspace 3:  ; append_layout /home/kaffeekind/.config/i3/layout/wp3.json"
 firefox &
 
 # wp4 spotify

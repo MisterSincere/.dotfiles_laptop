@@ -10,8 +10,8 @@ vim.g.ctrlp_user_command = {'.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 vim.g.ctrlp_use_caching = 0
 
 -- ycm options
-vim.g.ycm_enable_diagnostic_highlighting = 0
-vim.g.ycm_enable_diagnostic_signs = 0
+vim.g.ycm_enable_diagnostic_highlighting = 1
+vim.g.ycm_enable_diagnostic_signs = 1
 vim.g.ycm_global_ycm_extra_conf = '~/.config/nvim/.ycm_extra_conf.py'
 
 -- gotoheader
@@ -85,7 +85,7 @@ local cmake = require('cmake')
 cmake.setup({
   cmake_executable = 'cmake',
   parameters_file = 'neovim.json',
-  build_dir = tostring(Path:new('{cwd}', 'build/{os}-{build_type}')),
+  build_dir = tostring(Path:new('{cwd}', 'build-{build_type}/')),
   default_projects_path = tostring(Path:new(vim.loop.os_homedir(), 'programming')),
   configure_args = {'-D', 'CMAKE_EXPORT_COMPILE_COMMANDS=1'},
   build_args = {},
@@ -132,20 +132,18 @@ local components = {
           and buffer.pick_letter .. ' '
            or buffer.devicon.icon
     end,
-    hl = {
-      fg = function(buffer)
-        return
-          (mappings.is_picking_focus() and yellow)
-          or (mappings.is_picking_close() and red)
-          or buffer.devicon.color
-      end,
-      style = function(_)
-        return
-          (mappings.is_picking_focus() or mappings.is_picking_close())
-          and 'italic,bold'
-           or nil
-      end,
-    },
+    fg = function(buffer)
+      return
+        (mappings.is_picking_focus() and yellow)
+        or (mappings.is_picking_close() and red)
+        or buffer.devicon.color
+    end,
+    style = function(_)
+      return
+        (mappings.is_picking_focus() or mappings.is_picking_close())
+        and 'italic,bold'
+         or nil
+    end,
     truncation = { priority = 1 }
   },
 
@@ -160,10 +158,8 @@ local components = {
     text = function(buffer)
       return buffer.unique_prefix
     end,
-    hl = {
-      fg = comments_fg,
-      style = 'italic',
-    },
+    fg = comments_fg,
+    style = 'italic',
     truncation = {
       priority = 3,
       direction = 'left',
@@ -174,16 +170,14 @@ local components = {
     text = function(buffer)
       return buffer.filename
     end,
-    hl = {
-      style = function(buffer)
-        return
-          ((buffer.is_focused and buffer.diagnostics.errors ~= 0)
-            and 'bold,underline')
-          or (buffer.is_focused and 'bold')
-          or (buffer.diagnostics.errors ~= 0 and 'underline')
-          or nil
-      end
-    },
+    style = function(buffer)
+      return
+        ((buffer.is_focused and buffer.diagnostics.errors ~= 0)
+          and 'bold,underline')
+        or (buffer.is_focused and 'bold')
+        or (buffer.diagnostics.errors ~= 0 and 'underline')
+        or nil
+    end,
     truncation = {
       priority = 2,
       direction = 'left',
@@ -197,14 +191,12 @@ local components = {
         or (buffer.diagnostics.warnings ~= 0 and '  ' .. buffer.diagnostics.warnings)
         or ''
     end,
-    hl = {
-      fg = function(buffer)
-        return
-          (buffer.diagnostics.errors ~= 0 and errors_fg)
-          or (buffer.diagnostics.warnings ~= 0 and warnings_fg)
-          or nil
-      end,
-    },
+    fg = function(buffer)
+      return
+        (buffer.diagnostics.errors ~= 0 and errors_fg)
+        or (buffer.diagnostics.warnings ~= 0 and warnings_fg)
+        or nil
+    end,
     truncation = { priority = 1 },
   },
 
@@ -212,11 +204,9 @@ local components = {
     text = function(buffer)
       return buffer.is_modified and '●' or ''
     end,
-    hl = {
-      fg = function(buffer)
-        return buffer.is_modified and green or nil
-      end
-    },
+    fg = function(buffer)
+      return buffer.is_modified and green or nil
+    end,
     delete_buffer_on_left_click = true,
     truncation = { priority = 1 },
   },
@@ -226,8 +216,9 @@ require('cokeline').setup({
   show_if_buffers_are_at_least = 2,
 
   buffers = {
+	filter_valid = function(buffer) return buffer.filename ~= 'quickfix' and buffer.filename ~= '[dap-repl]' end,
+    -- filter_valid = function(buffer) return buffer.type ~= 'terminal' end,
     -- filter_visible = function(buffer) return buffer.type ~= 'terminal' end,
-    filter_valid = function(buffer) return buffer.filename ~= 'quickfix' and buffer.filename ~= '[dap-repl]' end,
     new_buffers_position = 'next',
   },
 
@@ -236,14 +227,13 @@ require('cokeline').setup({
   },
 
   default_hl = {
-    focused = {
-      fg = get_hex('Normal', 'fg'),
-      bg = get_hex('ColorColumn', 'bg'),
-    },
-    unfocused = {
-      fg = get_hex('Comment', 'fg'),
-      bg = get_hex('ColorColumn', 'bg'),
-    },
+    fg = function(buffer)
+      return
+        buffer.is_focused
+        and get_hex('Normal', 'fg')
+         or get_hex('Comment', 'fg')
+    end,
+    bg = get_hex('ColorColumn', 'bg'),
   },
 
   components = {
@@ -265,5 +255,5 @@ require('cokeline').setup({
 end
 
 return {
-  setup = setup
+    setup = setup
 }

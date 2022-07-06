@@ -7,10 +7,10 @@ local setup = function()
   vim.opt.encoding = 'utf-8'
   
   -- amount of spaces tab acts like it "skips"
-  vim.opt.softtabstop = 2
+  vim.opt.softtabstop = 4
   
   -- number of spaces to use for each step of (auto)indent
-  vim.opt.shiftwidth = 2
+  vim.opt.shiftwidth = 4
   
   -- auto indent yes or no?
   vim.opt.autoindent = true
@@ -32,6 +32,11 @@ local setup = function()
   
   -- save undo history to a file
   vim.opt.undofile = true
+
+  vim.opt.foldmethod = 'indent'
+  vim.opt.foldlevel = 99
+
+  vim.opt.cursorline = true
   
   -- file containing undo history if undofile is true
   vim.opt.undodir = '/tmp/nvim/undodir'
@@ -40,7 +45,7 @@ local setup = function()
   vim.opt.termguicolors = true
   
   -- number of spaces tab expands to if expandtab is true
-  vim.opt.tabstop = 2
+  vim.opt.tabstop = 4
   
   -- don't show evil swapfiles
   vim.opt.swapfile = false
@@ -56,15 +61,16 @@ local setup = function()
   
   -- show line numbers
   vim.opt.number = true
+  vim.opt.relativenumber = true
   
   -- ignore upper or lower casing in search results
   vim.opt.ignorecase = true
   
   -- stop ignoring casing if search query has different casing
   vim.opt.smartcase = true
-  
+
   -- automatically expand tabs to spaces
-  vim.opt.expandtab = true
+  vim.opt.expandtab = false
   
   -- display a vertical column at 80 characters
   --vim.opt.colorcolumn = '80'
@@ -80,6 +86,9 @@ local setup = function()
   
   -- yank, delete, change etc. to and from the system clipboard
   vim.opt.clipboard = 'unnamedplus'
+
+  -- search for tags file towards root if it not in cur dir
+  vim.opt.tags = './tags,tags;$HOME'
 end
 
 return {

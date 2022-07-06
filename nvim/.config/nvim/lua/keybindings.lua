@@ -39,6 +39,10 @@ local setup = function()
   
   -- redo command
   nmap('<leader>r', ':redo<CR>')
+
+  -- buffer commands
+  nmap('gn', ':bn<CR>')
+  nmap('gp', ':bp<CR>')
   
   -- save and close commands with leader
   nmap('<leader>s', ':w<CR>')
@@ -48,21 +52,25 @@ local setup = function()
   nmap('<leader>ps', ':Rg<space>')
   
   -- resizing with leader
-  nmap('<leader>+', ':vertical resize +5<CR>', {silent=true})
+  nmap('<leader>=', ':vertical resize +5<CR>', {silent=true})
   nmap('<leader>-', ':vertical resize -5<CR>', {silent=true})
   
   -- ycm plugin keybinds
-  nmap('<leader>gd', ':YcmCompleter GoTo<CR>', {silent=true})
+  nmap('<leader>d', ':YcmCompleter GoTo<CR>', {silent=true})
   nmap('<leader>gf', ':YcmCompleter FixIt<CR>', {silent=true})
+  nmap('<leader>gr', ':YcmCompleter RefactorRename<space>')
+  nmap('<leader>gt', ':YcmCompleter GetType<CR>')
   
-  -- git blame plugin
-  nmap('<leader>b', ':<C-u>call gitblame#echo()<CR>')
+  -- tpopes fugitive
+  nmap('<leader>b', ':Git blame<CR>')
   
-  -- telescope / reloading
+  -- show nvim configs / reload configs
   nmap('<F1>', '<cmd>:lua require("utils.reload").reload()<CR>', {silent=true,noremap=false})
 
   -- telescope / project view
   nmap('<leader>v', '<cmd>:lua require("utils.project_view").view()<CR>', {silent=true})
+  -- telescope / tags view
+  nmap('<leader><leader>', '<cmd>:lua require("telescope.builtin").tags{}<CR>', {silent=true})
   
   -- cokeline
   nmap('<Tab>',     '<Plug>(cokeline-focus-next)', {silent = true, noremap = false})
@@ -89,7 +97,8 @@ local setup = function()
   nmap('<F7>', ':lua require\'dap\'.step_over()<CR>')
   nmap('<F8>', ':lua require\'dap\'.continue()<CR>')
 
-
+  -- clang format
+  nmap('<leader>f', ':ClangFormat<CR>', {silent = true})
 end
 
 return {
