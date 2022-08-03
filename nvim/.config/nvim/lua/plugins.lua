@@ -7,11 +7,27 @@ local setup  = function()
   	Plug 'khaveesh/vim-fish-syntax'
   	Plug 'tikhomirov/vim-glsl'
 
-	-- cpp highlighting
-	Plug 'bfrg/vim-cpp-modern'
+	---- RUST ----
+	-- syntax checking
+	--Plug 'dense-analysis/ale'
+	-- formatting
+	Plug 'rust-lang/rust.vim'
 
+	---- CPP ----
+	-- highlighting
+	Plug 'bfrg/vim-cpp-modern'
 	-- automatic tag generation
 	Plug 'ludovicchabant/vim-gutentags'
+	-- debugging
+  	Plug 'mfussenegger/nvim-dap'
+  	Plug 'nvim-treesitter/nvim-treesitter'
+  	Plug 'theHamsta/nvim-dap-virtual-text'
+	-- cmake / building / execution
+  	Plug 'Shatur/neovim-cmake'
+	-- formatting
+	Plug 'rhysd/vim-clang-format'
+	-- other
+  	Plug 'Yohannfra/Vim-Goto-Header'
 
 	-- used in status line to display git status
   	Plug 'tpope/vim-fugitive'
@@ -24,18 +40,10 @@ local setup  = function()
   	Plug 'nvim-telescope/telescope.nvim'
   	Plug 'nvim-telescope/telescope-ui-select.nvim'
 
-	-- used for reloading configs
+	-- tools (among others needed by neovim cmake)
   	Plug 'nvim-lua/plenary.nvim'
 
-	-- cpp used plugins
-  	Plug 'mfussenegger/nvim-dap'
-  	Plug 'nvim-treesitter/nvim-treesitter'
-  	Plug 'theHamsta/nvim-dap-virtual-text'
-  	Plug 'Shatur/neovim-cmake'
-  	Plug 'Yohannfra/Vim-Goto-Header'
-
 	-- format cpp file according to .clang-format via <leader>f
-	Plug 'rhysd/vim-clang-format'
 
 	-- keybinding <leader>u
 	Plug 'mbbill/undotree'

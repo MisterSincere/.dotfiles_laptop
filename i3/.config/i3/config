@@ -99,6 +99,9 @@ set $ws10 "10:"
 # use xprop
 #for_window [class="firefox"]                    move to workspace $ws2
 for_window [class="jetbrains-clion"]            move to workspace $ws2
+for_window [class="Seer"]			            move to workspace $ws2
+for_window [class="qrenderdoc"]		            move to workspace $ws2
+for_window [class="NVIDIA Nsight Graphics"]     move to workspace $ws2
 for_window [class="Raft"]                       move to workspace $ws2
 for_window [class="VirtualBox Manager"]         move to workspace $ws2
 for_window [class="Spotify"]                    move to workspace $ws4

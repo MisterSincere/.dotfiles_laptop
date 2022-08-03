@@ -26,7 +26,7 @@ endif
 " }}}
 
 " Terminal Colors:  {{{
-let g:terminal_color_0  = '#0e0e0e'  " black
+let g:terminal_color_0  = '#000000'  " black
 let g:terminal_color_1  = '#f44747'  " red
 let g:terminal_color_2  = '#608b4e'  " green
 let g:terminal_color_3  = '#d7ba7d'  " yellow
@@ -34,7 +34,7 @@ let g:terminal_color_4  = '#569cd6'  " blue
 let g:terminal_color_5  = '#c586c0'  " magenta
 let g:terminal_color_6  = '#4ec9b0'  " cyan
 let g:terminal_color_7  = '#d4d4d4'  " white
-let g:terminal_color_8  = '#1e1e1e'  " bright_black
+let g:terminal_color_8  = '#000000'  " bright_black
 let g:terminal_color_9  = '#f44747'  " bright_red
 let g:terminal_color_10 = '#608b4e'  " bright_green
 let g:terminal_color_11 = '#d7ba7d'  " bright_yellow
@@ -79,33 +79,33 @@ highlight Language ctermfg=4 guifg=#569cd6 cterm=italic gui=italic
 highlight Type ctermfg=6 guifg=#4ec9b0 cterm=NONE gui=NONE
 highlight Var ctermfg=6 guifg=#9cdcfe cterm=NONE gui=NONE
 highlight Tags ctermfg=7 guifg=#808080 cterm=NONE gui=NONE
-highlight User1 ctermfg=0 guifg=#1e1e1e ctermbg=2 guibg=#608b4e cterm=NONE gui=NONE
+highlight User1 ctermfg=0 guifg=#000000 ctermbg=2 guibg=#608b4e cterm=NONE gui=NONE
 highlight User2 ctermfg=7 guifg=#d4d4d4 ctermbg=0 guibg=#505050 cterm=NONE gui=NONE
 highlight User3 ctermfg=2 guifg=#608b4e ctermbg=0 guibg=#303030 cterm=NONE gui=NONE
-highlight Normal ctermfg=7 guifg=#d4d4d4 ctermbg=0 guibg=#0e0e0e cterm=NONE gui=NONE
-highlight NormalNC ctermbg=0 guibg=#0e0e0e cterm=NONE gui=NONE
+highlight Normal ctermfg=7 guifg=#d4d4d4 ctermbg=0 guibg=#000000 cterm=NONE gui=NONE
+highlight NormalNC ctermbg=0 guibg=#000000 cterm=NONE gui=NONE
 highlight ColorColumn ctermbg=0 guibg=#303030 cterm=NONE gui=NONE
 highlight iCursor ctermbg=4 guibg=#569cd6 cterm=NONE gui=NONE
 highlight vCursor ctermbg=13 guibg=#c586c0 cterm=NONE gui=NONE
 highlight rCursor ctermbg=1 guibg=#d16969 cterm=NONE gui=NONE
 highlight Cursor ctermbg=2 guibg=#608b4e cterm=NONE gui=NONE
 highlight TermCursor ctermbg=2 guibg=#608b4e cterm=NONE gui=NONE
-highlight CursorLine ctermbg=0 guibg=#111111 cterm=NONE gui=NONE
+highlight CursorLine ctermbg=0 guibg=#0e0e0e cterm=NONE gui=NONE
 highlight Directory ctermfg=4 guifg=#569cd6 cterm=NONE gui=NONE
 highlight DiffAdd ctermbg=2 guibg=#608b4e cterm=NONE gui=NONE
 highlight diffAdded ctermbg=2 guibg=#608b4e cterm=NONE gui=NONE
 highlight DiffChange ctermbg=3 guibg=#dcdcaa cterm=NONE gui=NONE
 highlight DiffDelete ctermbg=1 guibg=#d16969 cterm=NONE gui=NONE
 highlight DiffText ctermbg=7 guibg=#d4d4d4 cterm=NONE gui=NONE
-highlight EndOfBuffer ctermfg=0 guifg=#505050 ctermbg=0 guibg=#0e0e0e cterm=NONE gui=NONE
+highlight EndOfBuffer ctermfg=0 guifg=#505050 ctermbg=0 guibg=#000000 cterm=NONE gui=NONE
 highlight ErrorMsg ctermfg=1 guifg=#d16969 ctermbg=NONE guibg=NONE cterm=NONE gui=NONE
-highlight VertSplit ctermfg=0 guifg=#1e1e1e ctermbg=0 guibg=#303030 cterm=NONE gui=NONE
+highlight VertSplit ctermfg=0 guifg=#000000 ctermbg=0 guibg=#303030 cterm=NONE gui=NONE
 highlight Folded ctermfg=0 guifg=#505050 ctermbg=NONE guibg=NONE cterm=NONE gui=NONE
-highlight FoldColumn ctermfg=0 guifg=#1e1e1e ctermbg=0 guibg=#303030 cterm=NONE gui=NONE
-highlight SignColumn ctermbg=0 guibg=#1e1e1e cterm=NONE gui=NONE
+highlight FoldColumn ctermfg=0 guifg=#000000 ctermbg=0 guibg=#303030 cterm=NONE gui=NONE
+highlight SignColumn ctermbg=0 guibg=#000000 cterm=NONE gui=NONE
 highlight IncSearch ctermfg=NONE guifg=NONE ctermbg=4 guibg=#264f78 cterm=NONE gui=NONE
-highlight LineNr ctermfg=0 guifg=#505050 ctermbg=0 guibg=#0e0e0e cterm=NONE gui=NONE
-highlight CursorLineNr ctermfg=2 guifg=#d4d4d4 ctermbg=0 guibg=#0e0e0e cterm=NONE gui=NONE
+highlight LineNr ctermfg=0 guifg=#505050 ctermbg=0 guibg=#000000 cterm=NONE gui=NONE
+highlight CursorLineNr ctermfg=2 guifg=#d4d4d4 ctermbg=0 guibg=#000000 cterm=NONE gui=NONE
 highlight matchTag ctermbg=4 guibg=#264f78 cterm=NONE gui=NONE
 highlight MatchParen ctermbg=4 guibg=#264f78 cterm=NONE gui=NONE
 highlight ModeMsg ctermfg=7 guifg=#808080 cterm=NONE gui=NONE
@@ -116,17 +116,17 @@ highlight PmenuSel ctermfg=7 guifg=#d4d4d4 ctermbg=4 guibg=#264f78 cterm=NONE gu
 highlight PmenuSbar ctermbg=7 guibg=#808080 cterm=NONE gui=NONE
 highlight PmenuThumb ctermbg=4 guibg=#007acc cterm=NONE gui=NONE
 highlight Question ctermfg=6 guifg=#4ec9b0 ctermbg=NONE guibg=NONE cterm=NONE gui=NONE
-highlight Search ctermfg=0 guifg=#0e0e0e ctermbg=7 guibg=#d4d4d4 cterm=NONE gui=NONE
+highlight Search ctermfg=0 guifg=#000000 ctermbg=7 guibg=#d4d4d4 cterm=NONE gui=NONE
 highlight Substitute ctermfg=NONE guifg=NONE ctermbg=7 guibg=#d4d4d4 cterm=NONE gui=NONE
 highlight SpellBad ctermfg=1 guifg=#d16969 ctermbg=NONE guibg=NONE cterm=NONE gui=NONE
 highlight SpellCap ctermfg=1 guifg=#d16969 ctermbg=NONE guibg=NONE cterm=NONE gui=NONE
 highlight SpellRare ctermfg=1 guifg=#d16969 ctermbg=NONE guibg=NONE cterm=NONE gui=NONE
 highlight SpellLocal ctermfg=1 guifg=#d16969 ctermbg=NONE guibg=NONE cterm=NONE gui=NONE
 highlight TabLine ctermfg=7 guifg=#d4d4d4 ctermbg=0 guibg=#303030 cterm=italic gui=italic
-highlight TabLineFill ctermfg=7 guifg=#d4d4d4 ctermbg=0 guibg=#1e1e1e cterm=italic gui=italic
-highlight TabLineSel ctermfg=7 guifg=#d4d4d4 ctermbg=0 guibg=#1e1e1e cterm=NONE gui=NONE
+highlight TabLineFill ctermfg=7 guifg=#d4d4d4 ctermbg=0 guibg=#000000 cterm=italic gui=italic
+highlight TabLineSel ctermfg=7 guifg=#d4d4d4 ctermbg=0 guibg=#000000 cterm=NONE gui=NONE
 highlight Title ctermfg=13 guifg=#c586c0 cterm=bold gui=bold
-highlight Visual ctermbg=0 guibg=#1e1e1e cterm=reverse gui=reverse
+highlight Visual ctermbg=0 guibg=#000000 cterm=reverse gui=reverse
 highlight VisualNOS ctermfg=NONE guifg=NONE ctermbg=4 guibg=#264f78 cterm=NONE gui=NONE
 highlight WarningMsg ctermfg=3 guifg=#ce9178 cterm=NONE gui=NONE
 highlight WildMenu ctermfg=7 guifg=#d4d4d4 ctermbg=4 guibg=#264f78 cterm=NONE gui=NONE
@@ -134,7 +134,7 @@ highlight Debug ctermfg=4 guifg=#007acc cterm=NONE gui=NONE
 highlight SpecialKey ctermfg=2 guifg=#608b4e cterm=none gui=none
 highlight Tag ctermfg=2 guifg=#608b4e cterm=NONE gui=NONE
 highlight Ignore cterm=NONE gui=NONE
-highlight Conceal ctermfg=7 guifg=#d4d4d4 ctermbg=0 guibg=#1e1e1e cterm=NONE gui=NONE
+highlight Conceal ctermfg=7 guifg=#d4d4d4 ctermbg=0 guibg=#000000 cterm=NONE gui=NONE
 highlight Error ctermfg=1 guifg=#d16969 ctermbg=NONE guibg=NONE cterm=NONE gui=NONE
 highlight Todo ctermfg=7 guifg=#d4d4d4 ctermbg=2 guibg=#608b4e cterm=bold,italic gui=bold,italic
 highlight Underlined cterm=underline gui=underline
@@ -177,7 +177,7 @@ highlight link awkExpression Operator
 highlight link awkBoolLogic Operator
 highlight link awkSemicolon Operator
 highlight link awkSpecialCharacter Character
-highlight cType ctermfg=6 guifg=#4ec9b0 cterm=italic gui=italic
+highlight cType ctermfg=6 guifg=#4ec9b0 cterm=NONE gui=NONE
 highlight link cConstant Constant
 highlight link cFormat Constant
 highlight link cInclude Constant
@@ -603,8 +603,8 @@ highlight todoComment ctermfg=0 guifg=#505050 cterm=italic gui=italic
 highlight link CSVComment Comment
 highlight CSVColumnEven ctermfg=4 guifg=#569cd6 cterm=NONE gui=NONE
 highlight CSVColumnOdd ctermfg=2 guifg=#608b4e cterm=NONE gui=NONE
-highlight CSVColumnHeaderEven ctermfg=0 guifg=#1e1e1e ctermbg=4 guibg=#569cd6 cterm=NONE gui=NONE
-highlight CSVColumnHeaderOdd ctermfg=0 guifg=#1e1e1e ctermbg=2 guibg=#608b4e cterm=NONE gui=NONE
+highlight CSVColumnHeaderEven ctermfg=0 guifg=#000000 ctermbg=4 guibg=#569cd6 cterm=NONE gui=NONE
+highlight CSVColumnHeaderOdd ctermfg=0 guifg=#000000 ctermbg=2 guibg=#608b4e cterm=NONE gui=NONE
 highlight link vimCtrlChar YellowOrange
 highlight link vimEcho Function
 highlight link vimNamespace Type
@@ -741,11 +741,11 @@ highlight ALEError cterm=NONE gui=NONE
 highlight ALEWarning cterm=NONE gui=NONE
 highlight ALEStyleError cterm=NONE gui=NONE
 highlight ALEStyleWarning cterm=NONE gui=NONE
-highlight ALEInfoSign ctermfg=9 guifg=#b5cea8 ctermbg=0 guibg=#1e1e1e cterm=NONE gui=NONE
-highlight ALEErrorSign ctermfg=1 guifg=#d16969 ctermbg=0 guibg=#1e1e1e cterm=NONE gui=NONE
-highlight ALEWarningSign ctermfg=3 guifg=#d7ba7d ctermbg=0 guibg=#1e1e1e cterm=NONE gui=NONE
-highlight ALEStyleErrorSign ctermfg=3 guifg=#dcdcaa ctermbg=0 guibg=#1e1e1e cterm=NONE gui=NONE
-highlight ALEStyleWarningSign ctermfg=3 guifg=#dcdcaa ctermbg=0 guibg=#1e1e1e cterm=NONE gui=NONE
+highlight ALEInfoSign ctermfg=9 guifg=#b5cea8 ctermbg=0 guibg=#000000 cterm=NONE gui=NONE
+highlight ALEErrorSign ctermfg=1 guifg=#d16969 ctermbg=0 guibg=#000000 cterm=NONE gui=NONE
+highlight ALEWarningSign ctermfg=3 guifg=#d7ba7d ctermbg=0 guibg=#000000 cterm=NONE gui=NONE
+highlight ALEStyleErrorSign ctermfg=3 guifg=#dcdcaa ctermbg=0 guibg=#000000 cterm=NONE gui=NONE
+highlight ALEStyleWarningSign ctermfg=3 guifg=#dcdcaa ctermbg=0 guibg=#000000 cterm=NONE gui=NONE
 highlight ALEInfoLine cterm=NONE gui=NONE
 highlight ALEErrorLine cterm=NONE gui=NONE
 highlight ALEWarningLine cterm=NONE gui=NONE
@@ -757,7 +757,7 @@ highlight BookmarkSign ctermfg=6 guifg=#4ec9b0 ctermbg=0 guibg=#303030 cterm=NON
 highlight BookmarkAnnotationSign ctermfg=6 guifg=#4ec9b0 ctermbg=0 guibg=#303030 cterm=NONE gui=NONE
 highlight BookmarkLine cterm=NONE gui=NONE
 highlight BookmarkAnnotationLine cterm=NONE gui=NONE
-highlight BufTabLineCurrent ctermfg=0 guifg=#1e1e1e ctermbg=2 guibg=#608b4e cterm=NONE gui=NONE
+highlight BufTabLineCurrent ctermfg=0 guifg=#000000 ctermbg=2 guibg=#608b4e cterm=NONE gui=NONE
 highlight BufTabLineActive ctermfg=2 guifg=#608b4e ctermbg=0 guibg=#303030 cterm=NONE gui=NONE
 highlight BufTabLineHidden ctermfg=7 guifg=#d4d4d4 ctermbg=0 guibg=#303030 cterm=NONE gui=NONE
 highlight BufTabLineFill ctermbg=0 guibg=#303030 cterm=NONE gui=NONE
@@ -767,10 +767,10 @@ highlight deniteConcealedMark ctermfg=4 guifg=#264f78 cterm=NONE gui=NONE
 highlight deniteModeNormal ctermfg=2 guifg=#608b4e cterm=NONE gui=NONE
 highlight deniteModeInsert ctermfg=2 guifg=#608b4e cterm=NONE gui=NONE
 highlight deniteSource_Projectile_Name ctermfg=6 guifg=#4ec9b0 cterm=NONE gui=NONE
-highlight GitGutterAdd ctermfg=2 guifg=#608b4e ctermbg=0 guibg=#1e1e1e cterm=NONE gui=NONE
-highlight GitGutterChange ctermfg=3 guifg=#d7ba7d ctermbg=0 guibg=#1e1e1e cterm=NONE gui=NONE
-highlight GitGutterDelete ctermfg=1 guifg=#d16969 ctermbg=0 guibg=#1e1e1e cterm=NONE gui=NONE
-highlight GitGutterChangeDelete ctermfg=3 guifg=#d7ba7d ctermbg=0 guibg=#1e1e1e cterm=NONE gui=NONE
+highlight GitGutterAdd ctermfg=2 guifg=#608b4e ctermbg=0 guibg=#000000 cterm=NONE gui=NONE
+highlight GitGutterChange ctermfg=3 guifg=#d7ba7d ctermbg=0 guibg=#000000 cterm=NONE gui=NONE
+highlight GitGutterDelete ctermfg=1 guifg=#d16969 ctermbg=0 guibg=#000000 cterm=NONE gui=NONE
+highlight GitGutterChangeDelete ctermfg=3 guifg=#d7ba7d ctermbg=0 guibg=#000000 cterm=NONE gui=NONE
 highlight GitGutterAddLine cterm=NONE gui=NONE
 highlight GitGutterChangeLine cterm=NONE gui=NONE
 highlight GitGutterDeleteLine cterm=NONE gui=NONE
@@ -788,7 +788,7 @@ highlight githubTag ctermfg=6 guifg=#4ec9b0 cterm=NONE gui=NONE
 highlight githubEdit ctermfg=6 guifg=#4ec9b0 cterm=NONE gui=NONE
 highlight githubGist ctermfg=6 guifg=#4ec9b0 cterm=NONE gui=NONE
 highlight StartifyFile ctermfg=6 guifg=#4ec9b0 cterm=NONE gui=NONE
-highlight StartifyBracket ctermfg=0 guifg=#1e1e1e cterm=NONE gui=NONE
+highlight StartifyBracket ctermfg=0 guifg=#000000 cterm=NONE gui=NONE
 highlight StartifyNumber ctermfg=9 guifg=#b5cea8 cterm=NONE gui=NONE
 highlight StartifyVar ctermfg=9 guifg=#b5cea8 cterm=NONE gui=NONE
 highlight StartifySpecial ctermfg=9 guifg=#b5cea8 cterm=NONE gui=NONE

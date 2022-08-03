@@ -25,9 +25,19 @@ function M.view()
       '-e', '.frag',
       '-e', '.geom',
       '-e', '.prj',
+	  '-e', '.prjinc',
       '-e', '.rg',
       '-e', '.json',
+	  '-e', '.gitignore',
+	  '-e', '.rs',
+	  '-e', '.toml',
+	  '-e', 'lib/vkrenderer',
       '--exclude', 'lib',
+	  '--exclude', 'lib/vkrenderer/libs',
+      '--exclude', 'build-debug',
+      '--exclude', 'build-release',
+      '--exclude', 'cmake-build-debug',
+      '--exclude', 'cmake-build-release',
       '--exclude', 'build',
     },
 
@@ -60,4 +70,4 @@ function M.view()
   require('telescope.builtin').find_files(opts)
 end
 
-return M;
+return M

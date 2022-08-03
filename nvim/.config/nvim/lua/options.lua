@@ -37,7 +37,7 @@ local setup = function()
   vim.opt.foldlevel = 99
 
   vim.opt.cursorline = true
-  
+
   -- file containing undo history if undofile is true
   vim.opt.undodir = '/tmp/nvim/undodir'
   
