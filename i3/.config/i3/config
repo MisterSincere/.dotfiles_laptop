@@ -22,7 +22,7 @@ font pango:Ubuntu Regular 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec alacritty -e tmux
 
 # kill focused window
 bindsym $mod+q kill

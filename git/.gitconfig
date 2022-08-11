@@ -5,6 +5,17 @@
 	name = Nikkel Heesen
 	email = n.heesen@tu-bs.de
 [core]
-	editor = vim
+	editor = nvim
 [advice]
-  detachedHead = false
+	detachedHead = false
+[save]
+	directory = /opt/yavide/core/external/clang_complete
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[pull]
+	rebase = false
+[merge]
+	tool = meld

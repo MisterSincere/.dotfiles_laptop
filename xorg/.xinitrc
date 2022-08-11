@@ -33,14 +33,14 @@ fi
 
 # X Key Bindings 
 xbindkeys &
-setxkbmap de &
+setxkbmap us &
 picom --config ~/.config/picom/picom.conf &
-xinput --set-prop 11 299 -0.8 &
+xinput set-prop 11 291 -0.7 &
 
 export QT_SELECT=5
 export QT_QPA_PLATFORMTHEME=qt5ct
 export EDITOR=nvim
-#export ALARM_SOUND=
-
+#export ALARM_SOUND=$HOME/Documents/alarm.mp3
+export CMAKE_GENERATOR=Ninja
 exec i3
 

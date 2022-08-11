@@ -39,6 +39,10 @@ local setup = function()
   
   -- redo command
   nmap('<leader>r', ':redo<CR>')
+
+  -- buffer commands
+  nmap('gn', ':bn<CR>')
+  nmap('gp', ':bp<CR>')
   
   -- save and close commands with leader
   nmap('<leader>s', ':w<CR>')
@@ -48,27 +52,35 @@ local setup = function()
   nmap('<leader>ps', ':Rg<space>')
   
   -- resizing with leader
-  nmap('<leader>+', ':vertical resize +5<CR>', {silent=true})
+  nmap('<leader>=', ':vertical resize +5<CR>', {silent=true})
   nmap('<leader>-', ':vertical resize -5<CR>', {silent=true})
   
   -- ycm plugin keybinds
-  nmap('<leader>gd', ':YcmCompleter GoTo<CR>', {silent=true})
+  nmap('<leader>d', ':lua require\'utils.sensitive_funcs\'.goto_definition()<CR>', {silent=true})
   nmap('<leader>gf', ':YcmCompleter FixIt<CR>', {silent=true})
+  nmap('<leader>gr', ':YcmCompleter RefactorRename<space>')
+  nmap('<leader>gt', ':YcmCompleter GetType<CR>')
+  nmap('<leader>gu', ':YcmCompleter GoToReferences<CR>')
   
-  -- git blame plugin
-  nmap('<leader>b', ':<C-u>call gitblame#echo()<CR>')
+  -- tpopes fugitive
+  nmap('<leader>b', ':Git blame<CR>')
   
-  -- telescope / reloading
+  -- show nvim configs / reload configs
   nmap('<F1>', '<cmd>:lua require("utils.reload").reload()<CR>', {silent=true,noremap=false})
 
   -- telescope / project view
   nmap('<leader>v', '<cmd>:lua require("utils.project_view").view()<CR>', {silent=true})
+  -- telescope / tags view
+  nmap('<leader><leader>', '<cmd>:lua require("telescope.builtin").tags{}<CR>', {silent=true})
   
   -- cokeline
-  nmap('<Tab>',     '<Plug>(cokeline-focus-next)', {silent = true, noremap = false})
-  nmap('<S-Tab>',   '<Plug>(cokeline-focus-prev)', {silent = true, noremap = false})
-  nmap('<leader>c', '<Plug>(cokeline-pick-close)', {silent = true, noremap = false})
-  
+  nmap('<Tab>',				'<Plug>(cokeline-focus-next)', {silent = true, noremap = false})
+  nmap('<S-Tab>',   		'<Plug>(cokeline-focus-prev)', {silent = true, noremap = false})
+  nmap('<leader>c', 		'<Plug>(cokeline-pick-close)', {silent = true, noremap = false})
+  for i = 1,9 do
+	nmap(('<leader>%s'):format(i),	('<Plug>(cokeline-focus-%s)'):format(i),  {silent = true})
+  end
+
   -- gotoheader
   nmap('<F12>', ':GotoHeader<CR>')
   imap('<F12>', '<ESC>:GotoHeader<CR>')
@@ -78,18 +90,21 @@ local setup = function()
   nmap('<C-t>', ':CMake select_target<CR>')
   nmap('<C-d>', ':CMake select_build_type<CR>')
   nmap('<C-c>', ':CMake configure<CR>')
-  nmap('<C-b>', ':CMake build<CR>')
-  nmap('<leader><F5>', ':CMake build_and_debug<CR>')
-  nmap('<F5>', ':CMake run')
+  nmap('<C-b>', ':lua require \'utils.sensitive_funcs\'.build_all()<CR>')
+  nmap('<leader><F5>', ':lua require\'utils.sensitive_funcs\'.run_debug()<CR>')
+  nmap('<F5>', ':lua require\'utils.sensitive_funcs\'.run()<CR>')
 
-  -- dap
-  nmap('<F9>', ':lua require\'dap\'.toggle_breakpoint()<CR>')
-  nmap('<leader><F9>', ':lua require\'dap\'.set_breakpoint(vim.fn.input(\'Breakpoint condition: \'))<CR>')
-  nmap('<F6>', ':lua require\'dap\'.step_into()<CR>')
-  nmap('<F7>', ':lua require\'dap\'.step_over()<CR>')
-  nmap('<F8>', ':lua require\'dap\'.continue()<CR>')
+  -- debugging
+  nmap('<F9>', ':lua require\'utils.sensitive_funcs\'.toggle_breakpoint()<CR>')
+  nmap('<leader><F9>', ':lua require\'utils.sensitive_funcs\'.conditional_breakpoint()<CR>')
+  nmap('<F6>', ':lua require\'utils.sensitive_funcs\'.step_into()<CR>')
+  nmap('<F7>', ':lua require\'utils.sensitive_funcs\'.step_over()<CR>')
+  nmap('<F8>', ':lua require\'utils.sensitive_funcs\'.continue()<CR>')
+  nmap('<F10>', ':lua require\'utils.sensitive_funcs\'.show_dbg_value()<CR>', {silent=false})
+  nmap('<F11>', ':lua require\'utils.sensitive_funcs\'.close_dbg_value()<CR>', {silent=false})
 
-
+  -- format (now language sensitive)
+  nmap('<leader>f', ':lua require\'utils.sensitive_funcs\'.format()<CR>', {silent = true})
 end
 
 return {

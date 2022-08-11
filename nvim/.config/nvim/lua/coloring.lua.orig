@@ -1,0 +1,20 @@
+-- coloring.lua
+
+local setup = function()
+  vim.opt.background = 'dark'
+<<<<<<< HEAD
+  vim.cmd('colorscheme gruvbox')
+  vim.cmd('syntax on')
+  vim.cmd('hi! Normal guibg=NONE gui=NONE ctermbg=NONE cterm=NONE')
+  vim.cmd('hi! SignColumn guibg=NONE gui=NONE ctermbg=NONE cterm=NONE')
+=======
+  vim.cmd('colorscheme dark_plus')
+  vim.cmd('syntax on')
+  --vim.cmd('hi! Normal guibg=NONE gui=NONE ctermbg=NONE cterm=NONE')
+  --vim.cmd('hi! SignColumn guibg=NONE gui=NONE ctermbg=NONE cterm=NONE')
+>>>>>>> desktop/master
+end
+
+return {
+  setup = setup
+}

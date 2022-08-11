@@ -8,7 +8,7 @@ W='#880000bb' # wrong
 V='#bb00bbbb' # verifying
 
 i3lock            \
--i ~/.config/i3/lock_image.jpg \
+-i ~/.config/i3/lock_image.png \
 --insidever-color=$C     \
 --ringver-color=$V       \
 \

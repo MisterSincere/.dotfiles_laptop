@@ -1,0 +1,35 @@
+# song / playback keys
+"playerctl -p spotify play-pause"
+  m:0x0 + c:172
+  XF86AudioPlay
+"playerctl -p spotify next"
+  m:0x0 + c:171
+  XF86AudioNext
+"playerctl -p spotify previous"
+  m:0x0 + c:173
+  XF86AudioPrev
+
+# volume keys
+"pactl set-sink-volume @DEFAULT_SINK@ +5% && ~/.config/i3/scripts/change_volume.sh"
+  m:0x0 + c:123
+  XF86AudioRaiseVolume
+"pactl set-sink-volume @DEFAULT_SINK@ -5% && ~/.config/i3/scripts/change_volume.sh"
+  m:0x0 + c:122
+  XF86AudioLowerVolume
+"pactl set-sink-mute @DEFAULT_SINK@ toggle && ~/.config/i3/scripts/change_volume.sh"
+  m:0x0 + c:121
+  XF86AudioMute
+<<<<<<< HEAD
+
+# backlight / brightness keys
+"brightnessctl s +5% && ~/.config/i3/scripts/change_brightness.sh"
+  m:0x0 + c:233 
+  XF86MonBrightnessUp
+"brightnessctl s 5%- && ~/.config/i3/scripts/change_brightness.sh"
+  m:0x0 + c:232
+  XF86MonBrightnessDown
+"~/.config/i3/scripts/toggle_ss.sh"
+  m:0x0 + c:160
+  XF86ScreenSaver
+=======
+>>>>>>> desktop/master

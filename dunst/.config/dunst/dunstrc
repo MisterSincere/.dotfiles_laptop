@@ -30,10 +30,10 @@
     height = 300
 
     # Position the notification in the top right corner
-    origin = top-right
+    origin = top-left
 
     # Offset from the origin
-    offset = 0x24
+    offset = 0x26
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -49,7 +49,7 @@
 
     # Set the progress bar height. This includes the frame, so make sure
     # it's at least twice as big as the frame width.
-    progress_bar_height = 12
+    progress_bar_height = 10
 
     # Set the frame width of the progress bar
     progress_bar_frame_width = 1
@@ -97,7 +97,7 @@
     #  * foreground: use the same color as the foreground;
     #  * frame: use the same color as the frame;
     #  * anything else will be interpreted as a X color.
-    separator_color = auto
+    separator_color = "#555555"
 
     # Sort messages by urgency.
     sort = yes
@@ -196,7 +196,7 @@
     max_icon_size = 64
 
     # Paths to default icons.
-    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/:/home/kaffeekind/.local/share/icons/
+    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/:/home/kaffeekind/.local/share/icons/:/home/kaffeekind/.icons/
 
     ### History ###
 
@@ -403,7 +403,7 @@
 
 [history-ignore]
     # This notification will not be saved in history
-    appname = "change_volume"
+    summary = "change_volume"
     history_ignore = yes
 
 #[skip-display]

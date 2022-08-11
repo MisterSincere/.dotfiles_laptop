@@ -1,0 +1,20 @@
+<<<<<<< HEAD
+~/
+vim/.vim/.netrwhist
+vim/.vim/plugged/
+vim/.vim/undodir/
+
+nvim/.config/nvim/plugged/
+=======
+vim/.vim/.netrwhist
+vim/.vim/plugged/
+vim/.vim/undodir/
+vim/.vim/doc/
+vim/.vim/bin/
+vim/.vim/plugin/
+vim/.vim/.VimballRecord
+
+nvim/.config/nvim/plugged/
+
+tags
+>>>>>>> desktop/master

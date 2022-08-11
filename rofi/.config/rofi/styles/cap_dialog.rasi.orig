@@ -1,0 +1,14 @@
+@import "dialog.rasi"
+
+window {
+<<<<<<< HEAD
+  width: 				  	12%;
+=======
+  width: 	12%;
+  height: 190px;
+>>>>>>> desktop/master
+}
+
+entry {
+  placeholder:      "Select source...";
+}
