@@ -58,7 +58,7 @@ bindsym $mod+w layout toggle tabbed split
 bindsym $mod+Shift+w layout toggle split splitv
 
 # keybind i am used to from windows
-bindsym $mod+e exec --no-startup-id terminator -x ranger
+bindsym $mod+e exec --no-startup-id alacritty -e ranger
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -98,7 +98,7 @@ for_window [class="Signal"]                     move to workspace $ws5
 for_window [class="whatsapp-nativefier-d40211"] move to workspace $ws5
 for_window [class="Skype"]                      move to workspace $ws5
 for_window [class="Telegram"]                   move to workspace $ws5
-for_window [class="Thunderbird"]                move to workspace $ws6
+for_window [class="thunderbird"]                move to workspace $ws6
 for_window [class="Steam"]                      move to workspace $ws7
 for_window [class="Lutris"]                     move to workspace $ws7
 
@@ -246,3 +246,6 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id /usr/bin/dunst
 
 exec_always --no-startup-id $HOME/.config/polybar/scripts/checkupdates.sh
+
+# printer
+#exec_always --no-startup-id hp-systray
