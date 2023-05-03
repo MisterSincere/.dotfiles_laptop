@@ -1,7 +1,4 @@
 " execute current python file
-autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python' shellescape(@%, 1)<CR>
-autocmd FileType python map <buffer> <F10> :w<CR>:exec '!python' shellescape(@%, 1)
-autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python' shellescape(@%, 1)<CR>
 autocmd FileType c setlocal foldmethod=syntax
 
 " jump to last position after reopening

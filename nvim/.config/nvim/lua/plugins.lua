@@ -3,6 +3,8 @@ local setup  = function()
 	local Plug = vim.fn['plug#']
   	vim.call('plug#begin', '~/.config/nvim/plugged')
 
+	Plug 'github/copilot.vim'
+
 	-- theming
   	Plug 'khaveesh/vim-fish-syntax'
   	Plug 'tikhomirov/vim-glsl'
@@ -28,13 +30,16 @@ local setup  = function()
 	Plug 'rhysd/vim-clang-format'
 	-- other
   	Plug 'Yohannfra/Vim-Goto-Header'
+	
+	---- PYTHON ----
+	Plug 'mfussenegger/nvim-dap-python'
 
 	-- used in status line to display git status
   	Plug 'tpope/vim-fugitive'
 	
 	-- a bufferline and its icons
-  	Plug 'kyazdani42/nvim-web-devicons'
-  	Plug 'noib3/nvim-cokeline'
+  	--Plug 'kyazdani42/nvim-web-devicons'
+  	--Plug 'noib3/nvim-cokeline'
   	
 	-- nvim dialog tool
   	Plug 'nvim-telescope/telescope.nvim'

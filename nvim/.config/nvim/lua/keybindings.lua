@@ -74,8 +74,8 @@ local setup = function()
   nmap('<leader><leader>', '<cmd>:lua require("telescope.builtin").tags{}<CR>', {silent=true})
   
   -- cokeline
-  nmap('<Tab>',				'<Plug>(cokeline-focus-next)', {silent = true, noremap = false})
-  nmap('<S-Tab>',   		'<Plug>(cokeline-focus-prev)', {silent = true, noremap = false})
+  --nmap('<Tab>',				'<Plug>(cokeline-focus-next)', {silent = true, noremap = false})
+  --nmap('<S-Tab>',   		'<Plug>(cokeline-focus-prev)', {silent = true, noremap = false})
   nmap('<leader>c', 		'<Plug>(cokeline-pick-close)', {silent = true, noremap = false})
   for i = 1,9 do
 	nmap(('<leader>%s'):format(i),	('<Plug>(cokeline-focus-%s)'):format(i),  {silent = true})
